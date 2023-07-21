@@ -1,8 +1,10 @@
-## Clash for Android
+## Clash You
 
-A Graphical user interface of [clash](https://github.com/Dreamacro/clash) for Android
+A Graphical user interface of [clash](https://github.com/Dreamacro/clash) for Android, uses Material You design specifications.
 
-<a href="https://play.google.com/store/apps/details?id=com.github.kr328.clash"><img width="200px" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/></a> or [Releases](https://github.com/Kr328/ClashForAndroid/releases)
+[Releases](https://github.com/Kr328/ClashForAndroid/releases)
+
+**The following content comes from the original repository.**
 
 ### Feature
 
