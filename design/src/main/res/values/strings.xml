@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="PluralsCandidate">
-    <string name="launch_name">Clash</string>
-    <string name="application_name">Clash for Android</string>
+    <string name="launch_name">Clash You</string>
+    <string name="application_name">Clash You</string>
 
     <string name="stopped">Stopped</string>
     <string name="tap_to_start">Tap to start</string>
@@ -96,7 +96,7 @@
     <string name="cancel">Cancel</string>
     <string name="reset">Reset</string>
 
-    <string name="clash_logcat">Clash Logcat</string>
+    <string name="clash_logcat">Clash You Logcat</string>
     <string name="history">History</string>
     <string name="logcat">Logcat</string>
 
@@ -110,7 +110,7 @@
     <string name="override">Override</string>
 
     <string name="auto_restart">Auto Restart</string>
-    <string name="allow_clash_auto_restart">Allow clash auto restart</string>
+    <string name="allow_clash_auto_restart">Allow Clash You auto restart</string>
 
     <string name="route_system_traffic">Route System Traffic</string>
     <string name="routing_via_vpn_service">Auto routing all system traffic via VpnService</string>
@@ -130,7 +130,7 @@
     <string name="access_control_packages">Access Control Packages</string>
     <string name="access_control_packages_summary">Configure access permission for apps</string>
 
-    <string name="options_unavailable">Options Unavailable until Clash Stopped</string>
+    <string name="options_unavailable">Options Unavailable until Clash You Stopped</string>
 
     <string name="general">General</string>
     <string name="dns">DNS</string>
@@ -197,26 +197,26 @@
     <string name="import_from_clipboard">Import from Clipboard</string>
     <string name="export_to_clipboard">Export to Clipboard</string>
 
-    <string name="clash_for_android">Clash for Android</string>
+    <string name="clash_for_android">Clash You</string>
 
     <string name="document">Document</string>
     <string name="feedback">Feedback</string>
     <string name="sources">Sources</string>
     <string name="donate">Donate</string>
-    <string name="clash_wiki">Clash Wiki</string>
+    <string name="clash_wiki">Clash You Wiki</string>
     <string name="github_issues">Github Issues</string>
     <string name="google_play">Google Play</string>
-    <string name="clash_core">Clash Core</string>
+    <string name="clash_core">Clash You Core</string>
     <string name="clash_wiki_url" translatable="false">https://github.com/Dreamacro/clash/wiki</string>
     <string name="github_issues_url" translatable="false">https://github.com/Kr328/ClashForAndroid/issues</string>
     <string name="donate_url" translatable="false">https://donate.kr328.app</string>
     <string name="github_url" translatable="false">https://github.com/Kr328/ClashForAndroid</string>
     <string name="clash_core_url" translatable="false">https://github.com/Dreamacro/clash</string>
 
-    <string name="tips_properties"><![CDATA[Accept Only <strong>Clash Config</strong>(including <strong>Proxy</strong>/<strong>Rules</strong>)]]></string>
-    <string name="tips_help"><![CDATA[Clash for Android is a <strong>freeware</strong> and we do <strong>NOT</strong> provide any service for it]]></string>
+    <string name="tips_properties"><![CDATA[Accept Only <strong>Clash You Config</strong>(including <strong>Proxy</strong>/<strong>Rules</strong>)]]></string>
+    <string name="tips_help"><![CDATA[Clash You is a <strong>freeware</strong> and we do <strong>NOT</strong> provide any service for it]]></string>
 
-    <string name="google_play_url" translatable="false">https://play.google.com/store/apps/details?id=com.github.kr328.clash</string>
+    <string name="google_play_url" translatable="false">https://play.google.com/store/apps/details?id=com.github.kr238.clash</string>
 
     <string name="app">App</string>
     <string name="service">Service</string>

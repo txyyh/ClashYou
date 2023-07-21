@@ -4,15 +4,15 @@
     <data>
         <variable
             name="master"
-            type="com.github.kr328.clash.design.ProfilesDesign" />
+            type="yos.clash.material.design.ProfilesDesign" />
         <variable
             name="self"
             type="android.app.Dialog" />
         <variable
             name="profile"
-            type="com.github.kr328.clash.service.model.Profile" />
+            type="yos.clash.material.service.model.Profile" />
 
-        <import type="com.github.kr328.clash.service.model.Profile.Type" />
+        <import type="yos.clash.material.service.model.Profile.Type" />
         <import type="android.view.View" />
     </data>
 
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.github.kr328.clash.design.view.LargeActionLabel
+        <yos.clash.material.design.view.LargeActionLabel
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> master.requestUpdate(self, profile)}"
@@ -30,7 +30,7 @@
             app:icon="@drawable/ic_baseline_update"
             app:text="@string/update" />
 
-        <com.github.kr328.clash.design.view.LargeActionLabel
+        <yos.clash.material.design.view.LargeActionLabel
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> master.requestEdit(self, profile)}"
@@ -38,7 +38,7 @@
             app:icon="@drawable/ic_baseline_edit"
             app:text="@string/edit" />
 
-        <com.github.kr328.clash.design.view.LargeActionLabel
+        <yos.clash.material.design.view.LargeActionLabel
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> master.requestDuplicate(self, profile)}"
@@ -47,7 +47,7 @@
             app:icon="@drawable/ic_baseline_content_copy"
             app:text="@string/duplicate" />
 
-        <com.github.kr328.clash.design.view.LargeActionLabel
+        <yos.clash.material.design.view.LargeActionLabel
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> master.requestDelete(self, profile)}"

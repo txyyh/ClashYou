@@ -4,7 +4,7 @@
         <variable
             name="message"
             type="com.github.kr328.clash.core.model.LogMessage" />
-        <import type="com.github.kr328.clash.design.util.I18nKt" />
+        <import type="yos.clash.material.design.util.I18nKt" />
     </data>
 
     <LinearLayout

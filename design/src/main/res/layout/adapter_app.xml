@@ -3,7 +3,7 @@
     <data>
         <variable
             name="app"
-            type="com.github.kr328.clash.design.model.AppInfo" />
+            type="yos.clash.material.design.model.AppInfo" />
         <variable
             name="selected"
             type="boolean" />

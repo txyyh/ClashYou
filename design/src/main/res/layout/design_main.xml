@@ -4,7 +4,7 @@
     <data>
         <variable
             name="self"
-            type="com.github.kr328.clash.design.MainDesign" />
+            type="yos.clash.material.design.MainDesign" />
         <variable
             name="clashRunning"
             type="boolean" />
@@ -28,7 +28,7 @@
             type="boolean" />
 
         <import type="android.view.View" />
-        <import type="com.github.kr328.clash.design.MainDesign.Request" />
+        <import type="yos.clash.material.design.MainDesign.Request" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -49,7 +49,7 @@
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/main_padding_horizontal"
-                android:paddingTop="@{self.surface.insets.top}"
+                android:paddingTop="100dp"
                 android:paddingBottom="@{self.surface.insets.bottom}">
 
                 <LinearLayout
@@ -58,7 +58,11 @@
                     android:gravity="center_vertical"
                     android:minHeight="@dimen/main_top_banner_height"
                     android:orientation="horizontal">
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/launch_name"
+                        android:textAppearance="@style/TextAppearance.Material3.Headline.Medium" />
                     <FrameLayout
                         android:layout_width="@dimen/large_item_header_layout_size"
                         android:layout_height="@dimen/large_item_header_layout_size">
@@ -71,14 +75,9 @@
                             android:backgroundTint="?attr/colorLogo" />
                     </FrameLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/launch_name"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
                 </LinearLayout>
 
-                <com.github.kr328.clash.design.view.LargeActionCard
+                <yos.clash.material.design.view.LargeActionCard
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/main_card_margin_vertical"
@@ -89,7 +88,7 @@
                     app:subtext="@{clashRunning ? @string/format_traffic_forwarded(forwarded) : @string/tap_to_start}"
                     app:text="@{clashRunning ? @string/running : @string/stopped}" />
 
-                <com.github.kr328.clash.design.view.LargeActionCard
+                <yos.clash.material.design.view.LargeActionCard
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/main_card_margin_vertical"
@@ -99,7 +98,7 @@
                     app:subtext="@{mode}"
                     app:text="@string/proxy" />
 
-                <com.github.kr328.clash.design.view.LargeActionCard
+                <yos.clash.material.design.view.LargeActionCard
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/main_card_margin_vertical"
@@ -108,7 +107,7 @@
                     app:subtext="@{profileName != null ? @string/format_profile_activated(profileName) : @string/not_selected}"
                     app:text="@string/profile" />
 
-                <com.github.kr328.clash.design.view.LargeActionLabel
+                <yos.clash.material.design.view.LargeActionLabel
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginVertical="@dimen/main_label_margin_vertical"
@@ -117,7 +116,7 @@
                     app:icon="@drawable/ic_baseline_swap_vertical_circle"
                     app:text="@string/providers" />
 
-                <com.github.kr328.clash.design.view.LargeActionLabel
+                <yos.clash.material.design.view.LargeActionLabel
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/main_label_margin_vertical"
@@ -125,7 +124,7 @@
                     app:icon="@drawable/ic_baseline_assignment"
                     app:text="@string/logs" />
 
-                <com.github.kr328.clash.design.view.LargeActionLabel
+                <yos.clash.material.design.view.LargeActionLabel
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/main_label_margin_vertical"
@@ -133,7 +132,7 @@
                     app:icon="@drawable/ic_baseline_settings"
                     app:text="@string/settings" />
 
-                <com.github.kr328.clash.design.view.LargeActionLabel
+                <yos.clash.material.design.view.LargeActionLabel
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/main_label_margin_vertical"
@@ -141,7 +140,7 @@
                     app:icon="@drawable/ic_baseline_help_center"
                     app:text="@string/help" />
 
-                <com.github.kr328.clash.design.view.LargeActionLabel
+                <yos.clash.material.design.view.LargeActionLabel
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/main_label_margin_vertical"

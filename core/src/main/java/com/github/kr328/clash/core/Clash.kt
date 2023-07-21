@@ -1,7 +1,20 @@
 package com.github.kr328.clash.core
 
-import com.github.kr328.clash.core.bridge.*
-import com.github.kr328.clash.core.model.*
+import com.github.kr328.clash.core.bridge.Bridge
+import com.github.kr328.clash.core.bridge.ClashException
+import com.github.kr328.clash.core.bridge.FetchCallback
+import com.github.kr328.clash.core.bridge.LogcatInterface
+import com.github.kr328.clash.core.bridge.TunInterface
+import com.github.kr328.clash.core.model.ConfigurationOverride
+import com.github.kr328.clash.core.model.FetchStatus
+import com.github.kr328.clash.core.model.LogMessage
+import com.github.kr328.clash.core.model.Provider
+import com.github.kr328.clash.core.model.Proxy
+import com.github.kr328.clash.core.model.ProxyGroup
+import com.github.kr328.clash.core.model.ProxySort
+import com.github.kr328.clash.core.model.Traffic
+import com.github.kr328.clash.core.model.TunnelState
+import com.github.kr328.clash.core.model.UiConfiguration
 import com.github.kr328.clash.core.util.parseInetSocketAddress
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.channels.Channel

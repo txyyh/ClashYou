@@ -3,7 +3,7 @@
     <data>
         <variable
             name="provider"
-            type="com.github.kr328.clash.design.model.ProfileProvider" />
+            type="yos.clash.material.design.model.ProfileProvider" />
     </data>
 
     <LinearLayout

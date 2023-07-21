@@ -3,7 +3,7 @@
     <data>
         <variable
             name="self"
-            type="com.github.kr328.clash.design.AppCrashedDesign" />
+            type="yos.clash.material.design.AppCrashedDesign" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -12,7 +12,7 @@
         android:paddingStart="@{self.surface.insets.start}"
         android:paddingEnd="@{self.surface.insets.end}">
 
-        <com.github.kr328.clash.design.view.ObservableScrollView
+        <yos.clash.material.design.view.ObservableScrollView
             android:id="@+id/scroll_root"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,9 +28,9 @@
                 android:paddingHorizontal="@dimen/logcat_padding_horizontal"
                 android:paddingVertical="@dimen/logcat_padding_vertical"
                 android:textIsSelectable="true" />
-        </com.github.kr328.clash.design.view.ObservableScrollView>
+        </yos.clash.material.design.view.ObservableScrollView>
 
-        <com.github.kr328.clash.design.view.ActivityBarLayout
+        <yos.clash.material.design.view.ActivityBarLayout
             android:id="@+id/activity_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,6 +38,6 @@
             android:paddingEnd="@dimen/item_tailing_margin">
 
             <include layout="@layout/common_activity_bar" />
-        </com.github.kr328.clash.design.view.ActivityBarLayout>
+        </yos.clash.material.design.view.ActivityBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

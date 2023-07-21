@@ -25,3 +25,8 @@ dependencies {
 tasks.getByName("clean", type = Delete::class) {
     delete(file("release"))
 }
+android {
+    defaultConfig {
+        applicationId = "yos.clash.material"
+    }
+}

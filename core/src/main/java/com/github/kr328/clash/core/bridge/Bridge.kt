@@ -3,8 +3,8 @@ package com.github.kr328.clash.core.bridge
 import android.os.Build
 import android.os.ParcelFileDescriptor
 import androidx.annotation.Keep
-import com.github.kr328.clash.common.Global
-import com.github.kr328.clash.common.log.Log
+import yos.clash.material.common.Global
+import yos.clash.material.common.log.Log
 import kotlinx.coroutines.CompletableDeferred
 import java.io.File
 

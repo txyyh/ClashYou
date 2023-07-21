@@ -4,7 +4,7 @@
     <data>
         <variable
             name="self"
-            type="com.github.kr328.clash.design.NewProfileDesign" />
+            type="yos.clash.material.design.NewProfileDesign" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -18,7 +18,7 @@
             layout="@layout/common_recycler_list"
             app:insets="@{self.surface.insets}" />
 
-        <com.github.kr328.clash.design.view.ActivityBarLayout
+        <yos.clash.material.design.view.ActivityBarLayout
             android:id="@+id/activity_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +26,6 @@
             android:paddingEnd="@dimen/item_tailing_margin">
 
             <include layout="@layout/common_activity_bar" />
-        </com.github.kr328.clash.design.view.ActivityBarLayout>
+        </yos.clash.material.design.view.ActivityBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

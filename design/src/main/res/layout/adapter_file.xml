@@ -3,10 +3,10 @@
     <data>
         <variable
             name="file"
-            type="com.github.kr328.clash.design.model.File" />
+            type="yos.clash.material.design.model.File" />
         <variable
             name="currentTime"
-            type="com.github.kr328.clash.design.ui.ObservableCurrentTime" />
+            type="yos.clash.material.design.ui.ObservableCurrentTime" />
         <variable
             name="open"
             type="android.view.View.OnClickListener" />
@@ -14,8 +14,8 @@
             name="more"
             type="android.view.View.OnClickListener" />
 
-        <import type="com.github.kr328.clash.design.util.I18nKt" />
-        <import type="com.github.kr328.clash.design.util.IntervalKt" />
+        <import type="yos.clash.material.design.util.I18nKt" />
+        <import type="yos.clash.material.design.util.IntervalKt" />
         <import type="android.view.View" />
     </data>
 

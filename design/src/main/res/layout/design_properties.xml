@@ -4,15 +4,15 @@
     <data>
         <variable
             name="self"
-            type="com.github.kr328.clash.design.PropertiesDesign" />
+            type="yos.clash.material.design.PropertiesDesign" />
         <variable
             name="profile"
-            type="com.github.kr328.clash.service.model.Profile" />
+            type="yos.clash.material.service.model.Profile" />
         <variable
             name="processing"
             type="boolean" />
 
-        <import type="com.github.kr328.clash.service.model.Profile.Type" />
+        <import type="yos.clash.material.service.model.Profile.Type" />
         <import type="android.view.View" />
     </data>
 
@@ -22,7 +22,7 @@
         android:paddingStart="@{self.surface.insets.start}"
         android:paddingEnd="@{self.surface.insets.end}">
 
-        <com.github.kr328.clash.design.view.ObservableScrollView
+        <yos.clash.material.design.view.ObservableScrollView
             android:id="@+id/scroll_root"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -56,7 +56,7 @@
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
                 </LinearLayout>
 
-                <com.github.kr328.clash.design.view.ActionTextField
+                <yos.clash.material.design.view.ActionTextField
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/properties_element_margin_vertical"
@@ -66,7 +66,7 @@
                     app:text="@{profile.name}"
                     app:title="@string/name" />
 
-                <com.github.kr328.clash.design.view.ActionTextField
+                <yos.clash.material.design.view.ActionTextField
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/properties_element_margin_vertical"
@@ -77,7 +77,7 @@
                     app:text="@{profile.source}"
                     app:title="@string/url" />
 
-                <com.github.kr328.clash.design.view.ActionTextField
+                <yos.clash.material.design.view.ActionTextField
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/properties_element_margin_vertical"
@@ -88,7 +88,7 @@
                     app:text="@{profile.interval == 0 ? @string/disabled : @string/format_minutes(profile.interval / 1000 / 60)}"
                     app:title="@string/auto_update" />
 
-                <com.github.kr328.clash.design.view.ActionLabel
+                <yos.clash.material.design.view.ActionLabel
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/properties_element_margin_vertical"
@@ -97,9 +97,9 @@
                     app:subtext="@string/browse_configuration_providers"
                     app:text="@string/browse_files" />
             </LinearLayout>
-        </com.github.kr328.clash.design.view.ObservableScrollView>
+        </yos.clash.material.design.view.ObservableScrollView>
 
-        <com.github.kr328.clash.design.view.ActivityBarLayout
+        <yos.clash.material.design.view.ActivityBarLayout
             android:id="@+id/activity_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,6 +146,6 @@
                         android:visibility="@{processing ? View.GONE : View.VISIBLE}" />
                 </FrameLayout>
             </RelativeLayout>
-        </com.github.kr328.clash.design.view.ActivityBarLayout>
+        </yos.clash.material.design.view.ActivityBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

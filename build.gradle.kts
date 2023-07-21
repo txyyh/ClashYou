@@ -34,11 +34,11 @@ subprojects {
     extensions.configure<BaseExtension> {
         defaultConfig {
             if (isApp) {
-                applicationId = "com.github.kr328.clash"
+                applicationId = "yos.clash.material"
             }
 
             minSdk = 21
-            targetSdk = 31
+            targetSdk = 34
 
             versionName = "2.5.12"
             versionCode = 205012

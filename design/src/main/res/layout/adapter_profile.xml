@@ -3,10 +3,10 @@
     <data>
         <variable
             name="profile"
-            type="com.github.kr328.clash.service.model.Profile" />
+            type="yos.clash.material.service.model.Profile" />
         <variable
             name="currentTime"
-            type="com.github.kr328.clash.design.ui.ObservableCurrentTime" />
+            type="yos.clash.material.design.ui.ObservableCurrentTime" />
         <variable
             name="clicked"
             type="android.view.View.OnClickListener" />
@@ -14,8 +14,8 @@
             name="menu"
             type="android.view.View.OnClickListener" />
 
-        <import type="com.github.kr328.clash.design.util.I18nKt" />
-        <import type="com.github.kr328.clash.design.util.IntervalKt" />
+        <import type="yos.clash.material.design.util.I18nKt" />
+        <import type="yos.clash.material.design.util.IntervalKt" />
     </data>
 
     <RelativeLayout

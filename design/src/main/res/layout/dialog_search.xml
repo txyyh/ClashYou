@@ -3,7 +3,7 @@
     <data>
         <variable
             name="surface"
-            type="com.github.kr328.clash.design.ui.Surface" />
+            type="yos.clash.material.design.ui.Surface" />
     </data>
 
     <LinearLayout
@@ -42,7 +42,7 @@
                 android:singleLine="true" />
         </LinearLayout>
 
-        <com.github.kr328.clash.design.view.AppRecyclerView
+        <yos.clash.material.design.view.AppRecyclerView
             android:id="@+id/main_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

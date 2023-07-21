@@ -3,7 +3,7 @@
     <data>
         <variable
             name="surface"
-            type="com.github.kr328.clash.design.ui.Surface" />
+            type="yos.clash.material.design.ui.Surface" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

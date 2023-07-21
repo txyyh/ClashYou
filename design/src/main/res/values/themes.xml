@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+    <style name="AppBottomSheetStyle" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:background">@drawable/bg_bottom_sheet</item>
     </style>
 
-    <style name="AppFullScreenDialogLightBase" parent="Theme.MaterialComponents.Light.Dialog">
+    <style name="AppFullScreenDialogLightBase" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowNoTitle">true</item>
@@ -27,7 +27,7 @@
         <item name="android:windowBackground">@color/color_light_background</item>
     </style>
 
-    <style name="AppFullScreenDialogDarkBase" parent="Theme.MaterialComponents.Dialog">
+    <style name="AppFullScreenDialogDarkBase" parent="android:Theme.Material.NoActionBar">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowNoTitle">true</item>

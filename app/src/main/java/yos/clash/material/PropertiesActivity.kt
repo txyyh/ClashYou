@@ -1,0 +1,115 @@
+package yos.clash.material
+
+import yos.clash.material.R
+import yos.clash.material.common.util.intent
+import yos.clash.material.common.util.setUUID
+import yos.clash.material.common.util.uuid
+import yos.clash.material.design.PropertiesDesign
+import yos.clash.material.design.ui.ToastDuration
+import yos.clash.material.design.util.showExceptionToast
+import yos.clash.material.service.model.Profile
+import yos.clash.material.util.withProfile
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.selects.select
+
+class PropertiesActivity : BaseActivity<PropertiesDesign>() {
+    private var canceled: Boolean = false
+
+    override suspend fun main() {
+        setResult(RESULT_CANCELED)
+
+        val uuid = intent.uuid ?: return finish()
+        val design = PropertiesDesign(this)
+
+        val original = withProfile { queryByUUID(uuid) } ?: return finish()
+
+        design.profile = original
+
+        setContentDesign(design)
+
+        defer {
+            canceled = true
+
+            withProfile { release(uuid) }
+        }
+
+        while (isActive) {
+            select<Unit> {
+                events.onReceive {
+                    when (it) {
+                        Event.ActivityStop -> {
+                            val profile = design.profile
+
+                            if (!canceled && profile != original) {
+                                withProfile {
+                                    patch(profile.uuid, profile.name, profile.source, profile.interval)
+                                }
+                            }
+                        }
+                        Event.ServiceRecreated -> {
+                            finish()
+                        }
+                        else -> Unit
+                    }
+                }
+                design.requests.onReceive {
+                    when (it) {
+                        PropertiesDesign.Request.BrowseFiles -> {
+                            startActivity(FilesActivity::class.intent.setUUID(uuid))
+                        }
+                        PropertiesDesign.Request.Commit -> {
+                            design.verifyAndCommit()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        design?.apply {
+            launch {
+                if (!progressing) {
+                    if (requestExitWithoutSaving())
+                        finish()
+                }
+            }
+        } ?: return super.onBackPressed()
+    }
+
+    private suspend fun PropertiesDesign.verifyAndCommit() {
+        when {
+            profile.name.isBlank() -> {
+                showToast(R.string.empty_name, ToastDuration.Long)
+            }
+            profile.type != Profile.Type.File && profile.source.isBlank() -> {
+                showToast(R.string.invalid_url, ToastDuration.Long)
+            }
+            else -> {
+                try {
+                    withProcessing { updateStatus ->
+                        withProfile {
+                            patch(profile.uuid, profile.name, profile.source, profile.interval)
+
+                            coroutineScope {
+                                commit(profile.uuid) {
+                                    launch {
+                                        updateStatus(it)
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    setResult(RESULT_OK)
+
+                    finish()
+                } catch (e: Exception) {
+                    showExceptionToast(e)
+                }
+            }
+        }
+    }
+}

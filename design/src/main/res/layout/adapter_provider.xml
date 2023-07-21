@@ -6,16 +6,16 @@
             type="com.github.kr328.clash.core.model.Provider" />
         <variable
             name="state"
-            type="com.github.kr328.clash.design.model.ProviderState" />
+            type="yos.clash.material.design.model.ProviderState" />
         <variable
             name="currentTime"
-            type="com.github.kr328.clash.design.ui.ObservableCurrentTime" />
+            type="yos.clash.material.design.ui.ObservableCurrentTime" />
         <variable
             name="update"
             type="android.view.View.OnClickListener" />
 
-        <import type="com.github.kr328.clash.design.util.I18nKt" />
-        <import type="com.github.kr328.clash.design.util.IntervalKt" />
+        <import type="yos.clash.material.design.util.I18nKt" />
+        <import type="yos.clash.material.design.util.IntervalKt" />
         <import type="android.view.View" />
     </data>
 

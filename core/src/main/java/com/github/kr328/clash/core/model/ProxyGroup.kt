@@ -2,8 +2,8 @@ package com.github.kr328.clash.core.model
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.github.kr328.clash.common.util.createListFromParcelSlice
-import com.github.kr328.clash.common.util.writeToParcelSlice
+import yos.clash.material.common.util.createListFromParcelSlice
+import yos.clash.material.common.util.writeToParcelSlice
 import kotlinx.serialization.Serializable
 
 @Serializable

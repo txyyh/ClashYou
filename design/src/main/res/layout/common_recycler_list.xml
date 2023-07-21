@@ -3,10 +3,10 @@
     <data>
         <variable
             name="insets"
-            type="com.github.kr328.clash.design.ui.Insets" />
+            type="yos.clash.material.design.ui.Insets" />
     </data>
 
-    <com.github.kr328.clash.design.view.AppRecyclerView
+    <yos.clash.material.design.view.AppRecyclerView
         android:id="@+id/recycler_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

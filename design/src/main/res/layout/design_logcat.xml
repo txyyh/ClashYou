@@ -3,12 +3,12 @@
     <data>
         <variable
             name="self"
-            type="com.github.kr328.clash.design.LogcatDesign" />
+            type="yos.clash.material.design.LogcatDesign" />
         <variable
             name="streaming"
             type="boolean" />
         <import type="android.view.View" />
-        <import type="com.github.kr328.clash.design.LogcatDesign.Request" />
+        <import type="yos.clash.material.design.LogcatDesign.Request" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17,7 +17,7 @@
         android:paddingStart="@{self.surface.insets.start}"
         android:paddingEnd="@{self.surface.insets.end}">
 
-        <com.github.kr328.clash.design.view.AppRecyclerView
+        <yos.clash.material.design.view.AppRecyclerView
             android:id="@+id/recycler_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,7 +25,7 @@
             android:paddingTop="@{(float) self.surface.insets.top + @dimen/toolbar_height}"
             android:paddingBottom="@{self.surface.insets.bottom}" />
 
-        <com.github.kr328.clash.design.view.ActivityBarLayout
+        <yos.clash.material.design.view.ActivityBarLayout
             android:id="@+id/activity_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,6 +97,6 @@
                 </FrameLayout>
 
             </RelativeLayout>
-        </com.github.kr328.clash.design.view.ActivityBarLayout>
+        </yos.clash.material.design.view.ActivityBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
