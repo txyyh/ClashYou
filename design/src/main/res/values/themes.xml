@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppBottomSheetStyle" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="AppBottomSheetStyle" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:background">@drawable/bg_bottom_sheet</item>
     </style>
 
-    <style name="AppFullScreenDialogLightBase" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="AppFullScreenDialogLightBase" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowNoTitle">true</item>
@@ -27,7 +27,7 @@
         <item name="android:windowBackground">@color/color_light_background</item>
     </style>
 
-    <style name="AppFullScreenDialogDarkBase" parent="android:Theme.Material.NoActionBar">
+    <style name="AppFullScreenDialogDarkBase" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowNoTitle">true</item>
@@ -112,7 +112,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="AppThemeLightBase" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppThemeLightBase" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowBackground">@color/color_light_background</item>
         <item name="android:ambientShadowAlpha">0.08</item>
         <item name="android:spotShadowAlpha">0.08</item>
@@ -134,7 +134,7 @@
         <item name="fullScreenDialogTheme">@style/AppFullScreenDialogLight</item>
     </style>
 
-    <style name="AppThemeDarkBase" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppThemeDarkBase" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/color_dark_background</item>
         <item name="android:ambientShadowAlpha">0.08</item>
         <item name="android:spotShadowAlpha">0.08</item>

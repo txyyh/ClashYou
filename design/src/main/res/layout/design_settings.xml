@@ -19,18 +19,26 @@
             android:id="@+id/scroll_root"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none">
-
-            <LinearLayout
+            android:scrollbars="none"
+            android:layout_marginTop="@dimen/toolbar_height"
+            android:paddingTop="10dp">
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="@{(float) self.surface.insets.top + @dimen/toolbar_height}"
-                android:paddingBottom="@{self.surface.insets.bottom}">
-
-                <yos.clash.material.design.view.ActionLabel
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@{(float) self.surface.insets.top}"
+                    android:paddingBottom="@{self.surface.insets.bottom}">
+
+                    <yos.clash.material.design.view.ActionLabel
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                     android:onClick="@{() -> self.request(Request.StartApp)}"
                     app:icon="@drawable/ic_baseline_settings"
                     app:text="@string/app" />
@@ -42,14 +50,15 @@
                     app:icon="@drawable/ic_baseline_dns"
                     app:text="@string/network" />
 
-                <yos.clash.material.design.view.ActionLabel
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{() -> self.request(Request.StartOverride)}"
-                    app:icon="@drawable/ic_baseline_extension"
-                    app:text="@string/override" />
+                    <yos.clash.material.design.view.ActionLabel
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> self.request(Request.StartOverride)}"
+                        app:icon="@drawable/ic_baseline_extension"
+                        app:text="@string/override" />
 
-            </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </yos.clash.material.design.view.ObservableScrollView>
 
         <yos.clash.material.design.view.ActivityBarLayout

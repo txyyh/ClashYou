@@ -1,3 +1,5 @@
+@file:Suppress("LeakingThis")
+
 package yos.clash.material.util
 
 import androidx.lifecycle.Lifecycle
@@ -7,7 +9,7 @@ import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
 
 class ActivityResultLifecycle : LifecycleOwner {
-    override val lifecycle = LifecycleRegistry(this)
+    private val lifecycle = LifecycleRegistry(this)
 
     init {
         lifecycle.currentState = Lifecycle.State.INITIALIZED
@@ -40,5 +42,9 @@ class ActivityResultLifecycle : LifecycleOwner {
 
     private fun markDestroy() {
         lifecycle.currentState = Lifecycle.State.DESTROYED
+    }
+
+    override fun getLifecycle(): Lifecycle {
+        return lifecycle
     }
 }

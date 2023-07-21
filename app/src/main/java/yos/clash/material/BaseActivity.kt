@@ -101,7 +101,7 @@ abstract class BaseActivity<D : Design<*>> :
 
         DynamicColors.applyToActivitiesIfAvailable(this.application)
 
-        //applyDayNight()
+        applyDayNight()
 
         launch {
             main()
