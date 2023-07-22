@@ -197,7 +197,7 @@
     <string name="import_from_clipboard">Import from Clipboard</string>
     <string name="export_to_clipboard">Export to Clipboard</string>
 
-    <string name="clash_for_android">Clash For Android</string>
+    <string name="clash_for_android" translatable="false">Clash You</string>
 
     <string name="document">Document</string>
     <string name="feedback">Feedback</string>
@@ -287,4 +287,5 @@
     <string name="permission_request_positive">Go to grant</string>
     <string name="permission_request_negative">Not now</string>
     <string name="github_url_now" translatable="false">https://github.com/Yos-X/ClashYou</string>
+    <string name="clash_for_android_show" translatable="false">Clash for Android</string>
 </resources>

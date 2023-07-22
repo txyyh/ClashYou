@@ -57,8 +57,6 @@ abstract class BaseActivity<D : Design<*>> :
             if (value != null) {
                 setContentView(value.root)
             } else {
-                installSplashScreen()
-                //屏幕遮罩
                 setContentView(View(this))
             }
         }

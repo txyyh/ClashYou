@@ -78,7 +78,7 @@ class HelpDesign(
                 category(R.string.sources)
 
                 clickable(
-                    title = R.string.clash_for_android,
+                    title = R.string.clash_for_android_show,
                     summary = R.string.github_url
                 ) {
                     clicked {

@@ -2,13 +2,17 @@
 
 package yos.clash.material
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.selects.select
 import yos.clash.material.common.util.grantPermissions
 import yos.clash.material.common.util.ticker
 import yos.clash.material.common.util.uuid
@@ -18,8 +22,6 @@ import yos.clash.material.remote.FilesClient
 import yos.clash.material.service.model.Profile
 import yos.clash.material.util.fileName
 import yos.clash.material.util.withProfile
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.selects.select
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -47,6 +49,7 @@ class FilesActivity : BaseActivity<FilesDesign>() {
                         Event.ActivityStart, Event.ActivityStop -> {
                             design.fetch(client, stack, root)
                         }
+
                         else -> Unit
                     }
                 }
@@ -60,9 +63,11 @@ class FilesActivity : BaseActivity<FilesDesign>() {
                                     stack.pop()
                                 }
                             }
+
                             is FilesDesign.Request.OpenDirectory -> {
                                 stack.push(it.file.id)
                             }
+
                             is FilesDesign.Request.OpenFile -> {
                                 startActivityForResult(
                                     ActivityResultContracts.StartActivityForResult(),
@@ -72,48 +77,111 @@ class FilesActivity : BaseActivity<FilesDesign>() {
                                     ).grantPermissions()
                                 )
                             }
+
                             is FilesDesign.Request.DeleteFile -> {
                                 client.deleteDocument(it.file.id)
                             }
+
                             is FilesDesign.Request.RenameFile -> {
                                 val newName = design.requestFileName(it.file.name)
 
                                 client.renameDocument(it.file.id, newName)
                             }
+
                             is FilesDesign.Request.ImportFile -> {
-                                if (Build.VERSION.SDK_INT >= 23) {
-                                    val hasPermission = ContextCompat.checkSelfPermission(
-                                        this@FilesActivity,
-                                        Manifest.permission.READ_EXTERNAL_STORAGE
-                                    ) == PackageManager.PERMISSION_GRANTED
-
-                                    if (!hasPermission) {
-                                        val granted = startActivityForResult(
-                                            ActivityResultContracts.RequestPermission(),
-                                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                                        )
-
-                                        if (!granted) {
-                                            return@onReceive
-                                        }
-                                    }
-                                }
-
-                                val uri: Uri? = startActivityForResult(
-                                    ActivityResultContracts.GetContent(),
-                                    "*/*"
+                                val hasPermission = XXPermissions.isGranted(
+                                    this@FilesActivity,
+                                    Permission.MANAGE_EXTERNAL_STORAGE
                                 )
 
-                                if (uri != null) {
-                                    if (it.file == null) {
-                                        val name = design.requestFileName(uri.fileName ?: "File")
+                                if (!hasPermission) {
+                                    XXPermissions.with(this@FilesActivity)
+                                        .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                                        .request(object : OnPermissionCallback {
+                                            override fun onGranted(
+                                                permissions: MutableList<String>,
+                                                allGranted: Boolean
+                                            ) {
+                                                /*if (!allGranted) {
+                                                    Toast.makeText(this@MainActivity, "部分权限未授予，某些功能可能无法使用", Toast.LENGTH_SHORT).show()
+                                                }*/
+                                                //成功
+                                                launch(Dispatchers.Main) {
+                                                    val uri: Uri? = startActivityForResult(
+                                                        ActivityResultContracts.GetContent(),
+                                                        "*/*"
+                                                    )
 
-                                        client.importDocument(stack.last(), uri, name)
-                                    } else {
-                                        client.copyDocument(it.file!!.id, uri)
+                                                    if (uri != null) {
+                                                        if (it.file == null) {
+                                                            val name = design.requestFileName(
+                                                                uri.fileName ?: "File"
+                                                            )
+
+                                                            client.importDocument(
+                                                                stack.last(),
+                                                                uri,
+                                                                name
+                                                            )
+                                                        } else {
+                                                            client.copyDocument(
+                                                                it.file!!.id,
+                                                                uri
+                                                            )
+                                                        }
+                                                        design.fetch(client, stack, root)
+                                                    }
+                                                }
+                                            }
+
+                                            override fun onDenied(
+                                                permissions: MutableList<String>,
+                                                doNotAskAgain: Boolean
+                                            ) {
+                                                if (doNotAskAgain) {
+                                                    // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                                                    XXPermissions.startPermissionActivity(
+                                                        this@FilesActivity,
+                                                        permissions
+                                                    )
+                                                }
+                                            }
+                                        })
+                                    /*val granted = startActivityForResult(
+                                        ActivityResultContracts.RequestPermission(),
+                                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                                    )
+
+                                    if (!granted) {
+                                        return@onReceive
+                                    }*/
+                                } else {
+                                    val uri: Uri? = startActivityForResult(
+                                        ActivityResultContracts.GetContent(),
+                                        "*/*"
+                                    )
+
+                                    if (uri != null) {
+                                        if (it.file == null) {
+                                            val name = design.requestFileName(
+                                                uri.fileName ?: "File"
+                                            )
+                                            client.importDocument(
+                                                stack.last(),
+                                                uri,
+                                                name
+                                            )
+                                        } else {
+                                            client.copyDocument(
+                                                it.file!!.id,
+                                                uri
+                                            )
+                                        }
+                                        design.fetch(client, stack, root)
                                     }
                                 }
                             }
+
                             is FilesDesign.Request.ExportFile -> {
                                 val uri: Uri? = startActivityForResult(
                                     ActivityResultContracts.CreateDocument("text/plain"),

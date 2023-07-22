@@ -2,6 +2,7 @@ package yos.clash.material
 
 import android.content.Context
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
@@ -24,6 +25,7 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity<MainDesign>() {
     override suspend fun main() {
+        installSplashScreen()
         val design = MainDesign(this)
 
         setContentDesign(design)

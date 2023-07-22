@@ -2,9 +2,12 @@
 
 **⚠ This page is translated by GPT 4.**
 
-Based on [Clash For Android](https://github.com/Kr328/ClashForAndroid), a [clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, using the Material You design language.
+Based on [Clash for Android](https://github.com/Kr328/ClashForAndroid),
+a [clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, using the Material
+You design language.
 
-The latest version can be obtained from [Releases](https://github.com/Kr328/ClashForAndroid/releases).
+The latest version can be obtained
+from [Releases](https://github.com/Kr328/ClashForAndroid/releases).
 
 ### Version Features
 

@@ -2,6 +2,7 @@ package yos.clash.material
 
 import android.app.Application
 import android.content.Context
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import yos.clash.material.common.Global
 import yos.clash.material.common.compat.currentProcessName
 import yos.clash.material.common.log.Log
@@ -28,6 +29,7 @@ class MainApplication : Application() {
         } else {
             sendServiceRecreated()
         }
+        //屏幕遮罩
     }
 
     fun finalize() {
