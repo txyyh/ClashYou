@@ -78,19 +78,31 @@ jobs:
 
       - name: Show Artifacts SHA256
         run: |
-            echo "### Build Success" >> $GITHUB_STEP_SUMMARY
-            echo "|Artifact|SHA256|" >> $GITHUB_STEP_SUMMARY
-            echo "|:--------:|:----------|" >> $GITHUB_STEP_SUMMARY
-            release-armeabi-v7a=($(sha256sum ${{ env.APK_FILE_RELEASE_ARM32 }}))
-            echo "|release-armeabi-v7a|$release-armeabi-v7a" >> $GITHUB_STEP_SUMMARY
-            release-arm64-v8a=($(sha256sum ${{ env.APK_FILE_RELEASE_ARM64 }}))
-            echo "|release-arm64-v8a|$release-arm64-v8a" >> $GITHUB_STEP_SUMMARY
-            release-x86=($(sha256sum ${{ env.APK_FILE_RELEASE_X86 }}))
-            echo "|release-x86|$release-x86" >> $GITHUB_STEP_SUMMARY
-            release-x86_64=($(sha256sum ${{ env.APK_FILE_RELEASE_X64 }}))
-            echo "|release-x86_64|$release-x86_64" >> $GITHUB_STEP_SUMMARY
-            release-universal=($(sha256sum ${{ env.APK_FILE_RELEASE_UNIVERSAL }}))
-            echo "|release-universal|$release-universal" >> $GITHUB_STEP_SUMMARY
+          echo "### Build Success" >> $GITHUB_STEP_SUMMARY
+          echo "|Artifact|SHA256|" >> $GITHUB_STEP_SUMMARY
+          echo "|:--------:|:----------|" >> $GITHUB_STEP_SUMMARY
+          # Release Artifacts
+          release-armeabi-v7a=($(sha256sum ${{ env.APK_FILE_RELEASE_ARM32 }}))
+          echo "|release-armeabi-v7a|$release-armeabi-v7a" >> $GITHUB_STEP_SUMMARY
+          release-arm64-v8a=($(sha256sum ${{ env.APK_FILE_RELEASE_ARM64 }}))
+          echo "|release-arm64-v8a|$release-arm64-v8a" >> $GITHUB_STEP_SUMMARY
+          release-x86=($(sha256sum ${{ env.APK_FILE_RELEASE_X86 }}))
+          echo "|release-x86|$release-x86" >> $GITHUB_STEP_SUMMARY
+          release-x86_64=($(sha256sum ${{ env.APK_FILE_RELEASE_X64 }}))
+          echo "|release-x86_64|$release-x86_64" >> $GITHUB_STEP_SUMMARY
+          release-universal=($(sha256sum ${{ env.APK_FILE_RELEASE_UNIVERSAL }}))
+          echo "|release-universal|$release-universal" >> $GITHUB_STEP_SUMMARY
+          # Debug Artifacts
+          debug-armeabi-v7a=($(sha256sum ${{ env.APK_FILE_DEBUG_ARM32 }}))
+          echo "|debug-armeabi-v7a|$debug-armeabi-v7a" >> $GITHUB_STEP_SUMMARY
+          debug-arm64-v8a=($(sha256sum ${{ env.APK_FILE_DEBUG_ARM64 }}))
+          echo "|debug-arm64-v8a|$debug-arm64-v8a" >> $GITHUB_STEP_SUMMARY
+          debug-x86=($(sha256sum ${{ env.APK_FILE_DEBUG_X86 }}))
+          echo "|debug-x86|$debug-x86" >> $GITHUB_STEP_SUMMARY
+          debug-x86_64=($(sha256sum ${{ env.APK_FILE_DEBUG_X64 }}))
+          echo "|debug-x86_64|$debug-x86_64" >> $GITHUB_STEP_SUMMARY
+          debug-universal=($(sha256sum ${{ env.APK_FILE_DEBUG_UNIVERSAL }}))
+          echo "|debug-universal|$debug-universal" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload Release APK (armeabi-v7a)
         uses: actions/upload-artifact@v3
