@@ -39,5 +39,8 @@ tasks.getByName("clean", type = Delete::class) {
 android {
     defaultConfig {
         applicationId = "yos.clash.material"
+        targetSdk = 34
     }
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 }

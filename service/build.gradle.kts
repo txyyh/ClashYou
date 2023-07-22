@@ -20,6 +20,13 @@ dependencies {
     implementation(libs.kaidl.runtime)
     implementation(libs.rikkax.multiprocess)
 }
+android {
+    defaultConfig {
+        targetSdk = 34
+    }
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
+}
 
 afterEvaluate {
     android {
