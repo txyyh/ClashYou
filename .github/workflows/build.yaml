@@ -1,10 +1,10 @@
-name: Build Unsigned
+name: CI Builds
 on:
   push:
     branches:
       - main
     paths-ignore:
-      - '.github/**'
+      # - '.github/**'
       - '.idea/**'
       - '.gitattributes'
       - '.gitignore'
@@ -14,7 +14,7 @@ on:
       - 'NOTICE'
   pull_request:
     paths-ignore:
-      - '.github/**'
+      # - '.github/**'
       - '.idea/**'
       - '.gitattributes'
       - '.gitignore'
@@ -22,24 +22,27 @@ on:
       - '**.md'
       - 'LICENSE'
       - 'NOTICE'
+  workflow_dispatch:
 
 jobs:
-  BuildUnsigned:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
           submodules: recursive
+
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: 'oracle'
           java-version: 17
+
       - name: Setup Go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.18
+          go-version: 'stable'
       - uses: actions/cache@v3
         with:
           path: |
@@ -48,6 +51,7 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
+
       - name: Build
         uses: gradle/gradle-build-action@v2
         with:
