@@ -42,7 +42,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
                     android:layout_toStartOf="@id/clear_view" />
 
                 <ImageView
@@ -50,15 +49,15 @@
                     android:layout_width="@dimen/item_tailing_component_size"
                     android:layout_height="@dimen/item_tailing_component_size"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginStart="@dimen/item_tailing_margin"
+                    android:layout_centerVertical="false"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="18dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:contentDescription="@string/reset"
                     android:focusable="true"
                     android:onClick="@{() -> self.requestClear()}"
-                    android:padding="@dimen/toolbar_image_action_padding"
+                    android:layout_marginHorizontal="@dimen/toolbar_image_action_padding"
                     android:src="@drawable/ic_baseline_replay" />
             </RelativeLayout>
         </yos.clash.material.design.view.ActivityBarLayout>

@@ -30,6 +30,7 @@ class LogFileAdapter(
         holder.label.setOnClickListener {
             open(current)
         }
+        holder.label.icon = null
     }
 
     override fun getItemCount(): Int {

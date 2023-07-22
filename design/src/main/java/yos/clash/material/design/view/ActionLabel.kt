@@ -24,6 +24,7 @@ class ActionLabel @JvmOverloads constructor(
         get() = binding.iconView.background
         set(value) {
             binding.iconView.background = value
+            binding.iconView.visibility = if (value == null) View.GONE else View.VISIBLE
         }
 
     var text: CharSequence?
@@ -40,7 +41,7 @@ class ActionLabel @JvmOverloads constructor(
         }
 
     override fun setOnClickListener(l: OnClickListener?) {
-        binding.root.setOnClickListener(l)
+        binding.clickAble.setOnClickListener(l)
     }
 
     init {

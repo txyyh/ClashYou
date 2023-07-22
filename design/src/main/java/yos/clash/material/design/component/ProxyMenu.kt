@@ -6,11 +6,11 @@ import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import com.github.kr328.clash.core.model.ProxySort
 import com.github.kr328.clash.core.model.TunnelState
-import yos.clash.material.design.BuildConfig
 import yos.clash.material.design.ProxyDesign
 import yos.clash.material.design.R
 import yos.clash.material.design.store.UiStore
 import kotlinx.coroutines.channels.Channel
+import yos.clash.material.design.YosConfigAchieve
 
 class ProxyMenu(
     context: Context,
@@ -89,7 +89,7 @@ class ProxyMenu(
         menu.menuInflater.inflate(R.menu.menu_proxy, menu.menu)
 
         menu.menu.apply {
-            findItem(R.id.script_mode).isVisible = BuildConfig.PREMIUM
+            findItem(R.id.script_mode).isVisible = YosConfigAchieve.getIfPremium()
 
             findItem(R.id.not_selectable).isChecked = uiStore.proxyExcludeNotSelectable
 

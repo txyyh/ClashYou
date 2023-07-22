@@ -34,6 +34,14 @@ class HelpDesign(
         val screen = preferenceScreen(context) {
             tips(R.string.tips_help)
 
+            clickable(
+                title = R.string.application_name,
+                summary = R.string.github_url_now
+            ) {
+                clicked {
+                    openLink(Uri.parse(context.getString(R.string.github_url_now)))
+                }
+            }
             category(R.string.document)
 
             clickable(
@@ -45,9 +53,9 @@ class HelpDesign(
                 }
             }
 
-            category(R.string.feedback)
+            /*category(R.string.feedback)
 
-            if (BuildConfig.PREMIUM) {
+            if (YosConfigAchieve.getIfPremium()) {
                 clickable(
                     title = R.string.google_play,
                     summary = R.string.google_play_url
@@ -65,9 +73,8 @@ class HelpDesign(
                 clicked {
                     openLink(Uri.parse(context.getString(R.string.github_issues_url)))
                 }
-            }
+            }*/
 
-            if (!BuildConfig.PREMIUM) {
                 category(R.string.sources)
 
                 clickable(
@@ -79,21 +86,26 @@ class HelpDesign(
                     }
                 }
 
-                clickable(
-                    title = R.string.clash_core,
-                    summary = R.string.clash_core_url
-                ) {
-                    clicked {
-                        openLink(Uri.parse(context.getString(R.string.clash_core_url)))
-                    }
+            clickable(
+                title = R.string.clash_core,
+                summary = R.string.clash_core_url
+            ) {
+                clicked {
+                    openLink(Uri.parse(context.getString(R.string.clash_core_url)))
                 }
             }
-
+            category(R.string.donate)
+            clickable(
+                title = R.string.developer_now,
+                summary = R.string.donate_url_now
+            ) {
+                clicked {
+                    openLink(Uri.parse(context.getString(R.string.donate_url_now)))
+                }
+            }
             if (context.resources.configuration.preferredLocale.language == "zh") {
-                category(R.string.donate)
-
                 clickable(
-                    title = R.string.donate,
+                    title = R.string.developer_before,
                     summary = R.string.donate_url
                 ) {
                     clicked {

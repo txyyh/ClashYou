@@ -7,8 +7,12 @@ import java.util.*
 
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
+        gradlePluginPortal()
         google()
+        maven("https://jitpack.io")
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
         maven("https://maven.kr328.app/releases")
     }
     dependencies {

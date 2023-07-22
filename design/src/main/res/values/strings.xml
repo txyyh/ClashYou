@@ -49,7 +49,7 @@
     <string name="application_broken_tips">App lacks the necessary runtime components, which is usually caused by downloading an incomplete apk.</string>
     <string name="reinstall">Reinstall</string>
     <string name="github_releases">Github Releases</string>
-    <string name="github_releases_url" translatable="false">https://github.com/kr328/clashforandroid/releases</string>
+    <string name="github_releases_url" translatable="false">https://github.com/Yos-X/ClashYou/releases</string>
 
     <string name="profile">Profile</string>
     <string name="name">Name</string>
@@ -197,23 +197,23 @@
     <string name="import_from_clipboard">Import from Clipboard</string>
     <string name="export_to_clipboard">Export to Clipboard</string>
 
-    <string name="clash_for_android">Clash You</string>
+    <string name="clash_for_android">Clash For Android</string>
 
     <string name="document">Document</string>
     <string name="feedback">Feedback</string>
     <string name="sources">Sources</string>
     <string name="donate">Donate</string>
-    <string name="clash_wiki">Clash You Wiki</string>
+    <string name="clash_wiki">Clash Wiki</string>
     <string name="github_issues">Github Issues</string>
     <string name="google_play">Google Play</string>
-    <string name="clash_core">Clash You Core</string>
+    <string name="clash_core">Clash Core</string>
     <string name="clash_wiki_url" translatable="false">https://github.com/Dreamacro/clash/wiki</string>
-    <string name="github_issues_url" translatable="false">https://github.com/Kr328/ClashForAndroid/issues</string>
+    <string name="github_issues_url" translatable="false">https://github.com/Yos-X/ClashYou/issues</string>
     <string name="donate_url" translatable="false">https://donate.kr328.app</string>
     <string name="github_url" translatable="false">https://github.com/Kr328/ClashForAndroid</string>
     <string name="clash_core_url" translatable="false">https://github.com/Dreamacro/clash</string>
 
-    <string name="tips_properties"><![CDATA[Accept Only <strong>Clash You Config</strong>(including <strong>Proxy</strong>/<strong>Rules</strong>)]]></string>
+    <string name="tips_properties"><![CDATA[Accept Only <strong>Clash Config</strong>(including <strong>Proxy</strong>/<strong>Rules</strong>)]]></string>
     <string name="tips_help"><![CDATA[Clash You is a <strong>freeware</strong> and we do <strong>NOT</strong> provide any service for it]]></string>
 
     <string name="google_play_url" translatable="false">https://play.google.com/store/apps/details?id=com.github.kr238.clash</string>
@@ -279,4 +279,12 @@
     <string name="version_updated_tips">The settings have been reseted and the old profiles needs to be saved again.</string>
 
     <string name="mode_switch_tips">Valid only for current session</string>
+    <string name="developer_now">Yos-X（now version）</string>
+    <string name="developer_before">kr238 (original version)</string>
+    <string name="donate_url_now" translatable="false">https://yos-x.github.io</string>
+    <string name="permission_request_title">Permission request</string>
+    <string name="permission_notification_desc">Clash You requires notification permission to display traffic information in the notification bar</string>
+    <string name="permission_request_positive">Go to grant</string>
+    <string name="permission_request_negative">Not now</string>
+    <string name="github_url_now" translatable="false">https://github.com/Yos-X/ClashYou</string>
 </resources>

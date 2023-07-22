@@ -3,29 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:minHeight="@dimen/item_min_height"
-        android:paddingVertical="@dimen/item_padding_vertical">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="?attr/selectableItemBackground"
-            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="8dp"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
             <LinearLayout
+                android:background="?attr/colorSurface"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/click_able"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/item_padding_vertical"
+                android:paddingHorizontal="@dimen/item_header_margin">
                 <View
                     android:id="@+id/icon_view"
                     android:layout_width="@dimen/item_header_component_size"
                     android:layout_height="@dimen/item_header_component_size"
-                    android:layout_marginHorizontal="@dimen/item_header_margin" />
+                    android:layout_marginEnd="@dimen/item_header_margin" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

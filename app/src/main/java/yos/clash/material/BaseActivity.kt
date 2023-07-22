@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.material.color.DynamicColors
 import yos.clash.material.common.compat.isAllowForceDarkCompat
 import yos.clash.material.common.compat.isLightNavigationBarCompat
@@ -56,6 +57,8 @@ abstract class BaseActivity<D : Design<*>> :
             if (value != null) {
                 setContentView(value.root)
             } else {
+                installSplashScreen()
+                //屏幕遮罩
                 setContentView(View(this))
             }
         }

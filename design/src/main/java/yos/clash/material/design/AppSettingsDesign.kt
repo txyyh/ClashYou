@@ -2,6 +2,9 @@ package yos.clash.material.design
 
 import android.content.Context
 import android.view.View
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
+import kotlinx.coroutines.withContext
 import yos.clash.material.design.databinding.DesignSettingsCommonBinding
 import yos.clash.material.design.model.Behavior
 import yos.clash.material.design.model.DarkMode
@@ -67,13 +70,14 @@ class AppSettingsDesign(
 
             category(R.string.service)
 
+            val permission = XXPermissions.isGranted(context, Permission.POST_NOTIFICATIONS)
             switch(
                 value = srvStore::dynamicNotification,
                 icon = R.drawable.ic_baseline_domain,
                 title = R.string.show_traffic,
-                summary = R.string.show_traffic_summary
+                summary = if (permission) R.string.show_traffic_summary else R.string.permission_notification_desc
             ) {
-                enabled = !running
+                enabled = (!running && permission)
             }
         }
 

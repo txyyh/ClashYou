@@ -185,7 +185,7 @@ class OverrideSettingsDesign(
                 empty = R.string.default_
             )
 
-            if (BuildConfig.PREMIUM) {
+            if (YosConfigAchieve.getIfPremium()) {
                 selectableList(
                     value = configuration::mode,
                     values = arrayOf(
@@ -223,7 +223,7 @@ class OverrideSettingsDesign(
                 )
             }
 
-            if (BuildConfig.PREMIUM) {
+            if (YosConfigAchieve.getIfPremium()) {
                 selectableList(
                     value = configuration.experimental::sniffTLSSNI,
                     values = booleanValues,

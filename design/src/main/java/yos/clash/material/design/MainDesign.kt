@@ -1,18 +1,24 @@
 package yos.clash.material.design
 
+import android.app.ProgressDialog.show
 import android.content.Context
+import android.graphics.drawable.BitmapDrawable
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import com.github.kr328.clash.core.model.TunnelState
 import com.github.kr328.clash.core.util.trafficTotal
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.hjq.permissions.XXPermissions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import yos.clash.material.design.databinding.DesignAboutBinding
 import yos.clash.material.design.databinding.DesignMainBinding
 import yos.clash.material.design.util.layoutInflater
 import yos.clash.material.design.util.resolveThemedColor
 import yos.clash.material.design.util.root
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import java.security.Permission
+
 
 class MainDesign(context: Context) : Design<MainDesign.Request>(context) {
     enum class Request {
@@ -73,9 +79,12 @@ class MainDesign(context: Context) : Design<MainDesign.Request>(context) {
                 this.versionName = versionName
             }
 
-            AlertDialog.Builder(context)
-                .setView(binding.root)
-                .show()
+            val alertDialog = AlertDialog.Builder(context).create()
+            val window = alertDialog.window
+            window!!.setBackgroundDrawable(BitmapDrawable())
+            window.decorView.setPadding(25, 0, 25, 0);
+            alertDialog.setView(binding.root)
+            alertDialog.show()
         }
     }
 
@@ -85,6 +94,22 @@ class MainDesign(context: Context) : Design<MainDesign.Request>(context) {
                 .setTitle(R.string.version_updated)
                 .setMessage(R.string.version_updated_tips)
                 .setPositiveButton(R.string.ok) { _, _ -> }
+                .show()
+        }
+    }
+
+    suspend fun showPermissionRequest() {
+        withContext(Dispatchers.Main) {
+            MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.permission_request_title)
+                .setMessage(R.string.permission_notification_desc)
+                .setPositiveButton(R.string.permission_request_positive) { _, _ ->
+                    XXPermissions.startPermissionActivity(
+                        context,
+                        com.hjq.permissions.Permission.POST_NOTIFICATIONS
+                    )
+                }
+                .setNegativeButton(R.string.permission_request_negative) { _, _ -> }
                 .show()
         }
     }
