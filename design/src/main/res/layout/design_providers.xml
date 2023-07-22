@@ -42,7 +42,7 @@
                     android:layout_width="@dimen/item_tailing_component_size"
                     android:layout_height="@dimen/item_tailing_component_size"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    android:layout_centerVertical="false"
                     android:layout_gravity="end|center_vertical"
                     android:layout_marginStart="@dimen/item_tailing_margin"
                     android:background="?attr/selectableItemBackgroundBorderless"
@@ -51,7 +51,8 @@
                     android:focusable="true"
                     android:onClick="@{() -> self.requestUpdateAll()}"
                     android:padding="@dimen/toolbar_image_action_padding"
-                    android:src="@drawable/ic_baseline_sync" />
+                    android:src="@drawable/ic_baseline_sync"
+                    android:layout_marginTop="18dp" />
 
             </RelativeLayout>
         </yos.clash.material.design.view.ActivityBarLayout>

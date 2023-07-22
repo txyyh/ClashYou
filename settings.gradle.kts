@@ -12,6 +12,9 @@ pluginManagement {
         mavenLocal()
         mavenCentral()
         gradlePluginPortal()
+        google()
+        maven("https://jitpack.io")
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 
@@ -30,24 +33,38 @@ dependencyResolutionManagement {
             val coordinator = "1.2.0"
             val recyclerview = "1.2.1"
             val viewpager = "1.0.0"
-            val material = "1.5.0-alpha03"
+            val material = "1.9.0"
             val serialization = "1.3.3"
             val kaidl = "1.15"
             val room = "2.4.2"
             val multiprocess = "1.0.0"
+            val splashscreen = "1.0.1"
+            val xxpermission = "18.2"
 
             library("build-android", "com.android.tools.build:gradle:$agp")
             library("build-kotlin-common", "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
-            library("build-kotlin-serialization", "org.jetbrains.kotlin:kotlin-serialization:$kotlin")
+            library(
+                "build-kotlin-serialization",
+                "org.jetbrains.kotlin:kotlin-serialization:$kotlin"
+            )
             library("build-ksp", "com.google.devtools.ksp:symbol-processing-gradle-plugin:$ksp")
             library("build-golang", "com.github.kr328.golang:gradle-plugin:$golang")
-            library("kotlin-coroutine", "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine")
-            library("kotlin-serialization-json", "org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization")
+            library(
+                "kotlin-coroutine",
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine"
+            )
+            library(
+                "kotlin-serialization-json",
+                "org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization"
+            )
             library("androidx-core", "androidx.core:core-ktx:$coreKtx")
             library("androidx-activity", "androidx.activity:activity:$activity")
             library("androidx-fragment", "androidx.fragment:fragment:$fragment")
             library("androidx-appcompat", "androidx.appcompat:appcompat:$appcompat")
-            library("androidx-coordinator", "androidx.coordinatorlayout:coordinatorlayout:$coordinator")
+            library(
+                "androidx-coordinator",
+                "androidx.coordinatorlayout:coordinatorlayout:$coordinator"
+            )
             library("androidx-recyclerview", "androidx.recyclerview:recyclerview:$recyclerview")
             library("androidx-viewpager", "androidx.viewpager2:viewpager2:$viewpager")
             library("androidx-room-compiler", "androidx.room:room-compiler:$room")
@@ -57,6 +74,13 @@ dependencyResolutionManagement {
             library("kaidl-compiler", "com.github.kr328.kaidl:kaidl:$kaidl")
             library("kaidl-runtime", "com.github.kr328.kaidl:kaidl-runtime:$kaidl")
             library("rikkax-multiprocess", "dev.rikka.rikkax.preference:multiprocess:$multiprocess")
+
+            library("androidx-splashscreen", "androidx.core:core-splashscreen:$splashscreen")
+            //权限请求框架
+            library(
+                "getactivity-xxpermission",
+                "com.github.getActivity:XXPermissions:$xxpermission"
+            )
         }
     }
 }

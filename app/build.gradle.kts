@@ -5,6 +5,15 @@ plugins {
 }
 
 dependencies {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        google()
+        maven("https://jitpack.io")
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
+        maven("https://maven.kr328.app/releases")
+    }
     compileOnly(project(":hideapi"))
 
     implementation(project(":core"))
@@ -20,6 +29,8 @@ dependencies {
     implementation(libs.androidx.coordinator)
     implementation(libs.androidx.recyclerview)
     implementation(libs.google.material)
+    implementation(libs.androidx.splashscreen)
+    implementation(libs.getactivity.xxpermission)
 }
 
 tasks.getByName("clean", type = Delete::class) {

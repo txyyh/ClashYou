@@ -1,58 +1,55 @@
 ## Clash You
 
-A Graphical user interface of [clash](https://github.com/Dreamacro/clash) for Android, uses Material You design specifications.
+📕 [English Version](./README_en.md)
 
-[Releases](https://github.com/Kr328/ClashForAndroid/releases)
+基于 [Clash For Android](https://github.com/Kr328/ClashForAndroid)，为安卓设备设计的 [clash](https://github.com/Dreamacro/clash) GUI，使用 Material You 设计语言。
 
-**The following content comes from the original repository.**
+可在 [Releases](https://github.com/Kr328/ClashForAndroid/releases) 获取最新版本。
 
-### Feature
+### 版本特性
 
-Fully feature of [clash](https://github.com/Dreamacro/clash) ~~(Exclude `external-controller`~~
+- 适配新安卓版本权限
+- 应用主题支持动态取色
+- 遵循 MD3 设计风格的 UI
 
-### Requirement
+### 实现
 
-- Android 5.0+ (minimum)
-- Android 7.0+ (recommend)
-- `armeabi-v7a` , `arm64-v8a`, `x86` or `x86_64` Architecture
+完整 [clash](https://github.com/Dreamacro/clash) 实现 ~~(无 `external-controller（外部控制器）`~~
 
-### License
+### 运行环境要求
 
-See also [LICENSE](./LICENSE) and [NOTICE](./NOTICE)
+- Android 5.0+ (最低)
+- Android 7.0+ (推荐)
+- `armeabi-v7a` , `arm64-v8a`, `x86` 或 `x86_64` 架构
 
-### Privacy Policy
+### 许可证
 
-See also [PRIVACY_POLICY.md](./PRIVACY_POLICY.md)
+参见 [LICENSE](./LICENSE) 与 [NOTICE](./NOTICE)
 
-### Build
+### 隐私协议
 
-1. Update submodules
+参见 [隐私协议](./PRIVACY_POLICY.md)
 
-   ```bash
+### 构建
+
+1. 更新子模块（IDEA 项目内 `终端`）
+   ```sh
    git submodule update --init --recursive
    ```
-
-2. Install **OpenJDK 11**, **Android SDK**, **CMake** and **Golang**
-
-3. Create `local.properties` in project root with
-
+2. 安装 **OpenJDK 11**, **Android SDK**, **CMake** 和 **Golang**
+3. 在项目根目录新建 `local.properties`，并写入以下内容
    ```properties
    sdk.dir=/path/to/android-sdk
    ```
-
-4. Create `signing.properties` in project root with
-
+4. 在项目根目录新建 `signing.properties`，并写入以下内容
    ```properties
-   keystore.path=/path/to/keystore/file
-   keystore.password=<key store password>
-   key.alias=<key alias>
-   key.password=<key password>
+   keystore.path=/path/to/keystore/file（签名密钥路径）
+   keystore.password=<签名密钥密码>
+   key.alias=<签名密钥别名>
+   key.password=<签名密钥密码>
    ```
-
-5. Build
-
-   ```bash
+5. 构建
+   ```sh
    ./gradlew app:assembleFossRelease
    ```
-
-6. Pick `app-<version>-foss-<arch>-release.apk` in `app/build/outputs/apk/foss/release/`
+6. 输出文件 `app-<version>-foss-<arch>-release.apk` 在 `app/build/outputs/apk/foss/release/` 目录下

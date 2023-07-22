@@ -7,8 +7,12 @@ import java.util.*
 
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
+        gradlePluginPortal()
         google()
+        maven("https://jitpack.io")
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
         maven("https://maven.kr328.app/releases")
     }
     dependencies {
@@ -40,8 +44,8 @@ subprojects {
             minSdk = 21
             targetSdk = 34
 
-            versionName = "2.5.12"
-            versionCode = 205012
+            versionName = "0.1.0"
+            versionCode = 1
 
             resValue("string", "release_name", "v$versionName")
             resValue("integer", "release_code", "$versionCode")
@@ -55,7 +59,7 @@ subprojects {
             if (!isApp) {
                 consumerProguardFiles("consumer-rules.pro")
             } else {
-                setProperty("archivesBaseName", "cfa-$versionName")
+                setProperty("archivesBaseName", "clash_you_${versionName}_yosx")
             }
         }
 
@@ -74,7 +78,7 @@ subprojects {
         productFlavors {
             flavorDimensions("feature")
 
-            create("foss") {
+            /*create("foss") {
                 isDefault = true
                 dimension = flavorDimensionList[0]
                 versionNameSuffix = ".foss"
@@ -84,6 +88,13 @@ subprojects {
                 if (isApp) {
                     applicationIdSuffix = ".foss"
                 }
+            }*/
+
+            create("foss") {
+                dimension = flavorDimensionList[0]
+                versionNameSuffix = ""
+
+                buildConfigField("boolean", "PREMIUM", "Boolean.parseBoolean(\"true\")")
             }
             create("premium") {
                 dimension = flavorDimensionList[0]

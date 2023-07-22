@@ -1,6 +1,10 @@
 package yos.clash.material
 
+import android.content.Context
 import androidx.activity.result.contract.ActivityResultContracts
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
 import yos.clash.material.R
 import yos.clash.material.common.util.intent
 import yos.clash.material.common.util.ticker
@@ -26,6 +30,7 @@ class MainActivity : BaseActivity<MainDesign>() {
 
         launch(Dispatchers.IO) {
             showUpdatedTips(design)
+            checkNotificationPermission(design)
         }
 
         design.fetch()
@@ -89,6 +94,14 @@ class MainActivity : BaseActivity<MainDesign>() {
             }
         }
     }
+
+    private suspend fun checkNotificationPermission(design: MainDesign) {
+        val permission = XXPermissions.isGranted(this, Permission.POST_NOTIFICATIONS)
+        if (!permission) {
+            design.showPermissionRequest()
+        }
+    }
+
 
     private suspend fun MainDesign.fetch() {
         setClashRunning(clashRunning)

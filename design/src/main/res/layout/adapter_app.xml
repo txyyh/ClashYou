@@ -52,8 +52,8 @@
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/switch_view"
-            android:layout_width="@dimen/item_tailing_component_size"
-            android:layout_height="@dimen/item_tailing_component_size"
+            android:layout_width="@dimen/item_header_component_size"
+            android:layout_height="@dimen/item_header_component_size"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:checked="@{selected}"

@@ -6,8 +6,9 @@
     <color name="color_system_ui_overlay">@android:color/system_surface_container_dark</color>
     <color name="color_light_background">@android:color/system_background_light</color>
     <color name="color_dark_background">@android:color/system_background_dark</color>
-    <color name="color_dark_surface">@android:color/system_surface_dark</color>
+    <color name="color_dark_surface">@android:color/system_surface_container_high_dark</color>
     <color name="color_light_clash_stopped">#FF808080</color>
     <color name="color_light_control_disabled">#FFD3D3D3</color>
     <color name="color_dark_control_disabled">#FF808080</color>
+    <color name="color_surface">@android:color/system_surface_container_light</color>
 </resources>

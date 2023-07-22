@@ -17,13 +17,23 @@
         android:paddingStart="@{self.surface.insets.start}"
         android:paddingEnd="@{self.surface.insets.end}">
 
-        <yos.clash.material.design.view.AppRecyclerView
-            android:id="@+id/recycler_list"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
+            android:layout_height="wrap_content"
             android:paddingTop="@{(float) self.surface.insets.top + @dimen/toolbar_height}"
-            android:paddingBottom="@{self.surface.insets.bottom}" />
+            android:paddingBottom="@{self.surface.insets.bottom}">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/yos_shape_color">
+                <yos.clash.material.design.view.AppRecyclerView
+                    android:id="@+id/recycler_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false" />
+            </LinearLayout>
+        </LinearLayout>
+
 
         <yos.clash.material.design.view.ActivityBarLayout
             android:id="@+id/activity_bar_layout"
@@ -49,7 +59,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true">
+                    android:layout_centerVertical="false"
+                    android:layout_marginTop="18dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"

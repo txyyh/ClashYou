@@ -13,6 +13,7 @@
         android:paddingStart="@{self.surface.insets.start}"
         android:paddingEnd="@{self.surface.insets.end}">
 
+
         <TextView
             android:id="@+id/empty_view"
             android:layout_width="wrap_content"
@@ -56,9 +57,10 @@
                         android:id="@+id/url_test_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_centerVertical="false"
                         android:layout_marginStart="@dimen/item_tailing_margin"
-                        android:layout_toStartOf="@id/menu_view">
+                        android:layout_toStartOf="@id/menu_view"
+                        android:layout_marginTop="18dp">
 
                         <ImageView
                             android:id="@+id/url_test_view"
@@ -85,14 +87,15 @@
                         android:layout_width="@dimen/item_tailing_component_size"
                         android:layout_height="@dimen/item_tailing_component_size"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
+                        android:layout_centerVertical="false"
                         android:layout_marginStart="@dimen/item_tailing_margin"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:clickable="true"
                         android:contentDescription="@string/more"
                         android:focusable="true"
                         android:padding="@dimen/toolbar_image_action_padding"
-                        android:src="@drawable/ic_baseline_more_vert" />
+                        android:src="@drawable/ic_baseline_more_vert"
+                        android:layout_marginTop="18dp" />
 
                 </RelativeLayout>
             </yos.clash.material.design.view.ActivityBarLayout>
@@ -104,7 +107,9 @@
                 android:alpha="0.96"
                 android:background="?android:windowBackground"
                 app:tabBackground="@android:color/transparent"
-                app:tabMode="scrollable" />
+                app:tabMode="scrollable"
+                android:paddingHorizontal="14dp"
+                android:clipToPadding="false" />
 
             <View
                 android:id="@+id/elevation_view"
@@ -112,7 +117,8 @@
                 android:layout_height="@dimen/divider_size"
                 android:alpha="0.96"
                 android:background="?android:windowBackground"
-                android:elevation="@dimen/tab_layout_elevation" />
+                android:elevation="@dimen/tab_layout_elevation"
+                android:visibility="gone" />
         </LinearLayout>
 
         <FrameLayout
@@ -128,7 +134,8 @@
                 android:layout_margin="@dimen/item_tailing_margin"
                 android:contentDescription="@string/delay_test"
                 android:onClick="@{() -> self.requestUrlTesting()}"
-                android:src="@drawable/ic_baseline_flash_on" />
+                android:src="@drawable/ic_baseline_flash_on"
+                app:backgroundTint="?attr/colorPrimary" />
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

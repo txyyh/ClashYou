@@ -31,14 +31,15 @@
 
         <RadioButton
             android:id="@+id/icon_view"
-            android:layout_width="@dimen/item_header_component_size"
-            android:layout_height="@dimen/item_header_component_size"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="@dimen/item_header_margin"
             android:checked="@{profile.active}"
             android:clickable="false"
             android:focusable="false"
             android:gravity="center" />
+        <!--否则显示不全-->
 
         <LinearLayout
             android:layout_width="wrap_content"

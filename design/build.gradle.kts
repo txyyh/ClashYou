@@ -5,6 +5,15 @@ plugins {
 }
 
 dependencies {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        google()
+        maven("https://jitpack.io")
+        maven("https://oss.sonatype.org/content/repositories/snapshots/")
+        maven("https://maven.kr328.app/releases")
+    }
     implementation(project(":common"))
     implementation(project(":core"))
     implementation(project(":service"))
@@ -18,4 +27,5 @@ dependencies {
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.viewpager)
     implementation(libs.google.material)
+    implementation(libs.getactivity.xxpermission)
 }
