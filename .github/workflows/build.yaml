@@ -56,3 +56,9 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: --no-daemon app:assembleFossRelease
+
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: ClashYou_Release
+          path: "app/build/outputs/apk/release/*.apk"
