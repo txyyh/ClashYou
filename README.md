@@ -2,7 +2,7 @@
 
 📕 [English Version](./README_en.md)
 
-基于 [Clash For Android](https://github.com/Kr328/ClashForAndroid)，为安卓设备设计的 [clash](https://github.com/Dreamacro/clash) GUI, 使用 Material You 设计语言。
+基于 [Clash For Android](https://github.com/Kr328/ClashForAndroid)，为安卓设备设计的 [clash](https://github.com/Dreamacro/clash) GUI，使用 Material You 设计语言。
 
 可在 [Releases](https://github.com/Kr328/ClashForAndroid/releases) 获取最新版本。
 
