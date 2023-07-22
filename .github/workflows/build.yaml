@@ -76,20 +76,20 @@ jobs:
           echo "APK_FILE_DEBUG_X64=$(find app/build/outputs/apk/foss/debug -name '*x86_64*')" >> $GITHUB_ENV
           echo "APK_FILE_DEBUG_UNIVERSAL=$(find app/build/outputs/apk/foss/debug -name '*universal*')" >> $GITHUB_ENV
 
-      - name: Upload Release APK (armeabi-v7a)
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ env.APK_FILE_RELEASE_ARM32 }}
+      # - name: Upload Release APK (armeabi-v7a)
+        # uses: actions/upload-artifact@v3
+        # with:
+          # path: ${{ env.APK_FILE_RELEASE_ARM32 }}
 
       - name: Upload Release APK (arm64-v8a)
         uses: actions/upload-artifact@v3
         with:
           path: ${{ env.APK_FILE_RELEASE_ARM64 }}
 
-      - name: Upload Release APK (x86)
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ env.APK_FILE_RELEASE_X86 }}
+      # - name: Upload Release APK (x86)
+        # uses: actions/upload-artifact@v3
+        # with:
+          # path: ${{ env.APK_FILE_RELEASE_X86 }}
 
       - name: Upload Release APK (x86_64)
         uses: actions/upload-artifact@v3
@@ -101,20 +101,20 @@ jobs:
         with:
           path: ${{ env.APK_FILE_RELEASE_UNIVERSAL }}
 
-      - name: Upload Debug APK (armeabi-v7a)
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ env.APK_FILE_DEBUG_ARM32 }}
+      # - name: Upload Debug APK (armeabi-v7a)
+        # uses: actions/upload-artifact@v3
+        # with:
+          # path: ${{ env.APK_FILE_DEBUG_ARM32 }}
 
       - name: Upload Debug APK (arm64-v8a)
         uses: actions/upload-artifact@v3
         with:
           path: ${{ env.APK_FILE_DEBUG_ARM64 }}
 
-      - name: Upload Debug APK (x86)
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ env.APK_FILE_DEBUG_X86 }}
+      # - name: Upload Debug APK (x86)
+        # uses: actions/upload-artifact@v3
+        # with:
+          # path: ${{ env.APK_FILE_DEBUG_X86 }}
 
       - name: Upload Debug APK (x86_64)
         uses: actions/upload-artifact@v3
