@@ -79,7 +79,6 @@
     <string name="update_time">更新時間</string>
     <string name="package_name">套件名稱</string>
     <string name="install_time">安裝時間</string>
-    <string name="clash_for_android">Clash For Android</string>
     <string name="feedback">回饋</string>
     <string name="github_issues">GitHub Issues</string>
     <string name="tips_properties"><![CDATA[僅接受 <strong>Clash 設定檔</strong> (包含<strong>Proxy</strong> /<strong>規則</strong>)]]></string>
