@@ -12,9 +12,19 @@
 - 应用主题支持动态取色
 - 遵循 MD3 设计风格的 UI
 
-### 实现
+### 注意
 
-完整 [Clash](https://github.com/Dreamacro/clash) 实现 ~~无 `external-controller（外部控制器）`~~
+Clash You 基于的 Clash for Android 已是最终版本，进入长久不更新状态。
+
+因此 Clash You 使用的旧内核将可能不支持新 Clash 内核的部分特性。
+
+若想使用 Clash 的较新特性，可以考虑原作者 [@Kr238](https://github.com/Kr328) 正在开发的 Clash Multiplatform 项目。
+
+Telegram Channel：[Clash Multiplatform](https://t.me/+uCUxZwHNjZxlYThl)
+
+### 特性
+
+完整 [Clash](https://github.com/Dreamacro/clash) 特性实现
 
 ### 运行环境要求
 
