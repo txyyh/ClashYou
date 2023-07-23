@@ -3,7 +3,7 @@
 📕 [English Version](./README_en.md)
 
 基于 [Clash for Android](https://github.com/Kr328/ClashForAndroid)
-，为安卓设备设计的 [clash](https://github.com/Dreamacro/clash) GUI，使用 Material You 设计语言。
+，为安卓设备设计的 [Clash](https://github.com/Dreamacro/clash) GUI，使用 Material You 设计语言。
 
 可在 [Releases](https://github.com/Kr328/ClashForAndroid/releases) 获取最新版本。
 
@@ -15,12 +15,12 @@
 
 ### 实现
 
-完整 [clash](https://github.com/Dreamacro/clash) 实现 ~~(无 `external-controller（外部控制器）`~~
+完整 [Clash](https://github.com/Dreamacro/clash) 实现 ~~无 `external-controller（外部控制器）`~~
 
 ### 运行环境要求
 
 - Android 5.0+ (最低)
-- Android 7.0+ (推荐)
+- Android 12.0+ (推荐)
 - `armeabi-v7a` , `arm64-v8a`, `x86` 或 `x86_64` 架构
 
 ### 许可证

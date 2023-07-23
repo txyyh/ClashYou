@@ -1,0 +1,170 @@
+name: Android CI
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      # - '.github/**'
+      - '.idea/**'
+      - '.gitattributes'
+      - '.gitignore'
+      - '.gitmodules'
+      - '**.md'
+      - 'LICENSE'
+      - 'NOTICE'
+  pull_request:
+    paths-ignore:
+      # - '.github/**'
+      - '.idea/**'
+      - '.gitattributes'
+      - '.gitignore'
+      - '.gitmodules'
+      - '**.md'
+      - 'LICENSE'
+      - 'NOTICE'
+  workflow_dispatch:
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: 17
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 'stable'
+
+      - name: Cache Go Files
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        # with:
+          # arguments: --no-daemon assemble
+
+      - name: Create Sign File
+        run: |
+          echo ${{ secrets.SIGNING_KEY }} | base64 -d > keystore.jks
+          echo ${{ secrets.SIGNING_PROPERTIES }} | base64 -d > signing.properties
+
+      - name: Build with Gradle
+        run: |
+          ./gradlew --no-daemon assemble
+
+      - name: Find APKs
+        run: |
+          echo "APK_FILE_RELEASE_ARM32=$(find app/build/outputs/apk/foss/release -name '*armeabi-v7a*')" >> $GITHUB_ENV
+          echo "APK_FILE_RELEASE_ARM64=$(find app/build/outputs/apk/foss/release -name '*arm64-v8a*')" >> $GITHUB_ENV
+          echo "APK_FILE_RELEASE_X86=$(find app/build/outputs/apk/foss/release -name '*x86-*')" >> $GITHUB_ENV
+          echo "APK_FILE_RELEASE_X64=$(find app/build/outputs/apk/foss/release -name '*x86_64*')" >> $GITHUB_ENV
+          echo "APK_FILE_RELEASE_UNIVERSAL=$(find app/build/outputs/apk/foss/release -name '*universal*')" >> $GITHUB_ENV
+          echo "APK_FILE_DEBUG_ARM32=$(find app/build/outputs/apk/foss/debug -name '*armeabi-v7a*')" >> $GITHUB_ENV
+          echo "APK_FILE_DEBUG_ARM64=$(find app/build/outputs/apk/foss/debug -name '*arm64-v8a*')" >> $GITHUB_ENV
+          echo "APK_FILE_DEBUG_X86=$(find app/build/outputs/apk/foss/debug -name '*x86-*')" >> $GITHUB_ENV
+          echo "APK_FILE_DEBUG_X64=$(find app/build/outputs/apk/foss/debug -name '*x86_64*')" >> $GITHUB_ENV
+          echo "APK_FILE_DEBUG_UNIVERSAL=$(find app/build/outputs/apk/foss/debug -name '*universal*')" >> $GITHUB_ENV
+
+      - name: Show Artifacts SHA256
+        run: |
+          echo "### Build Success" >> $GITHUB_STEP_SUMMARY
+          echo "|Artifact|SHA256|" >> $GITHUB_STEP_SUMMARY
+          echo "|:--------:|:----------|" >> $GITHUB_STEP_SUMMARY
+          # Release Artifacts
+          release_arm32=($(sha256sum ${{ env.APK_FILE_RELEASE_ARM32 }}))
+          echo "|release_armeabi-v7a|$release_arm32" >> $GITHUB_STEP_SUMMARY
+          release_arm64=($(sha256sum ${{ env.APK_FILE_RELEASE_ARM64 }}))
+          echo "|release_arm64-v8a|$release_arm64" >> $GITHUB_STEP_SUMMARY
+          release_x86=($(sha256sum ${{ env.APK_FILE_RELEASE_X86 }}))
+          echo "|release_x86|$release_x86" >> $GITHUB_STEP_SUMMARY
+          release_x64=($(sha256sum ${{ env.APK_FILE_RELEASE_X64 }}))
+          echo "|release_x86_64|$release_x64" >> $GITHUB_STEP_SUMMARY
+          release_universal=($(sha256sum ${{ env.APK_FILE_RELEASE_UNIVERSAL }}))
+          echo "|release_universal|$release_universal" >> $GITHUB_STEP_SUMMARY
+          # Debug Artifacts
+          debug_arm32=($(sha256sum ${{ env.APK_FILE_DEBUG_ARM32 }}))
+          echo "|debug_armeabi-v7a|$debug_arm32" >> $GITHUB_STEP_SUMMARY
+          debug_arm64=($(sha256sum ${{ env.APK_FILE_DEBUG_ARM64 }}))
+          echo "|debug_arm64-v8a|$debug_arm64" >> $GITHUB_STEP_SUMMARY
+          debug_x86=($(sha256sum ${{ env.APK_FILE_DEBUG_X86 }}))
+          echo "|debug_x86|$debug_x86" >> $GITHUB_STEP_SUMMARY
+          debug_x64=($(sha256sum ${{ env.APK_FILE_DEBUG_X64 }}))
+          echo "|debug_x86_64|$debug_x64" >> $GITHUB_STEP_SUMMARY
+          debug_universal=($(sha256sum ${{ env.APK_FILE_DEBUG_UNIVERSAL }}))
+          echo "|debug_universal|$debug_universal" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload Release APK (armeabi-v7a)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_RELEASE_ARM32 }}
+          name: ClashYou-release-armeabi-v7a-${{ github.event.head_commit.id }}
+
+      - name: Upload Release APK (arm64-v8a)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_RELEASE_ARM64 }}
+          name: ClashYou-release-arm64-v8a-${{ github.event.head_commit.id }}
+
+      - name: Upload Release APK (x86)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_RELEASE_X86 }}
+          name: ClashYou-release-x86-${{ github.event.head_commit.id }}
+
+      - name: Upload Release APK (x86_64)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_RELEASE_X64 }}
+          name: ClashYou-release-x86_64-${{ github.event.head_commit.id }}
+
+      - name: Upload Release APK (Universal)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_RELEASE_UNIVERSAL }}
+          name: ClashYou-release-universal-${{ github.event.head_commit.id }}
+
+      - name: Upload Debug APK (armeabi-v7a)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_DEBUG_ARM32 }}
+          name: ClashYou-debug-armeabi-v7a-${{ github.event.head_commit.id }}
+
+      - name: Upload Debug APK (arm64-v8a)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_DEBUG_ARM64 }}
+          name: ClashYou-debug-arm64-v8a-${{ github.event.head_commit.id }}
+
+      - name: Upload Debug APK (x86)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_DEBUG_X86 }}
+          name: ClashYou-debug-x86-${{ github.event.head_commit.id }}
+
+      - name: Upload Debug APK (x86_64)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_DEBUG_X64 }}
+          name: ClashYou-debug-x86_64-${{ github.event.head_commit.id }}
+
+      - name: Upload Debug APK (Universal)
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ env.APK_FILE_DEBUG_UNIVERSAL }}
+          name: ClashYou-debug-universal-${{ github.event.head_commit.id }}

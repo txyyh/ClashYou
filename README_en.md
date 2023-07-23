@@ -3,7 +3,7 @@
 **⚠ This page is translated by GPT 4.**
 
 Based on [Clash for Android](https://github.com/Kr328/ClashForAndroid),
-a [clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, using the Material
+a [Clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, using the Material
 You design language.
 
 The latest version can be obtained
@@ -17,12 +17,12 @@ from [Releases](https://github.com/Kr328/ClashForAndroid/releases).
 
 ### Implementation
 
-Complete [clash](https://github.com/Dreamacro/clash) implementation ~~(no `external-controller`~~
+Complete [Clash](https://github.com/Dreamacro/clash) implementation ~~no `external-controller`~~
 
 ### Runtime Requirements
 
 - Android 5.0+ (minimum)
-- Android 7.0+ (recommended)
+- Android 12.0+ (recommended)
 - `armeabi-v7a`, `arm64-v8a`, `x86` or `x86_64` architecture
 
 ### License
