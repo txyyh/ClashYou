@@ -1,4 +1,4 @@
-name: CI Builds
+name: Android CI
 on:
   push:
     branches:
@@ -25,7 +25,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -63,7 +63,7 @@ jobs:
         run: |
           touch signing.properties
           echo ${{ secrets.SIGNING_KEY }} | base64 -d > keystore.jks
-          echo "keystore.path = keystore.jks" >> signing.properties
+          echo "keystore.path = ../keystore.jks" >> signing.properties
           echo "keystore.password = ${{ secrets.KEY_STORE_PASSWORD }}" >> signing.properties
           echo "key.alias = ${{ secrets.ALIAS }}" >> signing.properties
           echo "key.password = ${{ secrets.KEY_PASSWORD }} }}" >> signing.properties
