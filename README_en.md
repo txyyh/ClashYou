@@ -9,7 +9,7 @@ You design language.
 The latest Releases version can be obtained from
 [Releases](https://github.com/Kr328/ClashForAndroid/releases)
 and Cl version can be obtained from
-[Actions](https://github.com/Yos-X/ClashYou/actions) (login is required, thanks To [@Light_summer](https://github.com/lightsummer233)).
+[Actions](https://github.com/Yos-X/ClashYou/actions) (login is required, thanks to [@Light_summer](https://github.com/lightsummer233)).
 
 ### Version Features
 
@@ -20,7 +20,9 @@ and Cl version can be obtained from
 ### Attention
 
 Clash You is based on **the final version** of Clash for Android, which has entered **a long-term non update state**.
+
 Therefore, the old kernel used by Clash You may **not support** some features of the new Clash core.
+
 For the newer features of Clash, consider the Clash Multiplatform project being developed by the original author [@Kr238](https://github.com/Kr328).
 
 Telegram Channel：[Clash Multiplatform](https://t.me/+uCUxZwHNjZxlYThl)
