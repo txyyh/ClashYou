@@ -59,7 +59,7 @@ subprojects {
             if (!isApp) {
                 consumerProguardFiles("consumer-rules.pro")
             } else {
-                setProperty("archivesBaseName", "clash_you_${versionName}_yosx")
+                setProperty("archivesBaseName", "clash-you-${versionName}-yosx")
             }
         }
 
