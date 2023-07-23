@@ -29,10 +29,3 @@ dependencies {
     implementation(libs.google.material)
     implementation(libs.getactivity.xxpermission)
 }
-android {
-    defaultConfig {
-        targetSdk = 34
-    }
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
-}
