@@ -8,7 +8,7 @@ You design language.
 
 The latest Releases version can be obtained from
 [Releases](https://github.com/Kr328/ClashForAndroid/releases)
-and Cl version can be obtained from
+and CI version can be obtained from
 [Actions](https://github.com/Yos-X/ClashYou/actions) (login is required, thanks to [@Light_summer](https://github.com/lightsummer233)).
 
 ### Version Features
