@@ -7,7 +7,7 @@ a [Clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, 
 You design language.
 
 The latest Release version can be obtained from
-[Releases](https://github.com/Kr328/ClashForAndroid/releases)
+[Releases](https://github.com/Yos-X/ClashYou/releases)
 and CI version can be obtained from
 [Actions](https://github.com/Yos-X/ClashYou/actions) (login is required, thanks to [@Light_summer](https://github.com/lightsummer233)).
 
