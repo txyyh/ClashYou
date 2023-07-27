@@ -34,7 +34,7 @@
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
         android:theme="@style/BootstrapTheme"
-        tools:ignore="GoogleAppIndexingWarning"
+        tools:ignore="DataExtractionRules,GoogleAppIndexingWarning"
         tools:targetApi="N">
         <meta-data
             android:name="releaseName"
@@ -43,12 +43,14 @@
             android:name="releaseCode"
             android:value="@integer/release_code" />
 
+        <!--suppress AndroidDomInspection -->
         <activity
             android:name=".MainActivity"
             android:configChanges="uiMode"
             android:exported="true"
             android:label="@string/launch_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -149,6 +149,8 @@
     <string name="rename">重新命名</string>
     <string name="file_name">檔名</string>
     <string name="format_type_unsaved">%s (未儲存)</string>
+    <string name="format_type_saved">%1$s (%2$s)</string>
+    <string name="format_profile_usage">%1$s / %2$s</string>
     <string name="format_minutes_ago">%d 分鐘前</string>
     <string name="format_hours_ago">%d 小時前</string>
     <string name="format_days_ago">%d 天前</string>

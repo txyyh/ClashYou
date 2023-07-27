@@ -11,3 +11,7 @@ fun PendingDao(): PendingDao {
 fun SelectionDao(): SelectionDao {
     return Database.database.openSelectionProxyDao()
 }
+
+fun ProviderMoreInfoDao(): ProviderMoreInfoDao {
+    return Database.database.openSubscriptionUserInfoDao()
+}

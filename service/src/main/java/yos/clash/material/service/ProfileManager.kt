@@ -17,6 +17,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import yos.clash.material.service.data.ProviderMoreInfoDao
+import yos.clash.material.service.model.MoreInfo
 import java.io.FileNotFoundException
 import java.util.*
 
@@ -157,12 +159,21 @@ class ProfileManager(private val context: Context) : IProfileManager,
     private suspend fun resolveProfile(uuid: UUID): Profile? {
         val imported = ImportedDao().queryByUUID(uuid)
         val pending = PendingDao().queryByUUID(uuid)
+        val subUserInfo = ProviderMoreInfoDao().queryByUUID(uuid)
 
         val active = store.activeProfile
         val name = pending?.name ?: imported?.name ?: return null
         val type = pending?.type ?: imported?.type ?: return null
         val source = pending?.source ?: imported?.source ?: return null
         val interval = pending?.interval ?: imported?.interval ?: return null
+        val moreInfo = subUserInfo?.let {
+            MoreInfo(
+                uploadBase = it.upload,
+                downloadBase = it.download,
+                totalBase = it.total,
+                expireTime = it.expire,
+            )
+        }
 
         return Profile(
             uuid,
@@ -173,7 +184,8 @@ class ProfileManager(private val context: Context) : IProfileManager,
             interval,
             resolveUpdatedAt(uuid),
             imported != null,
-            pending != null
+            pending != null,
+            moreInfo
         )
     }
 

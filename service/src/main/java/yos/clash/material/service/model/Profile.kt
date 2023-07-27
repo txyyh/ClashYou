@@ -22,6 +22,8 @@ data class Profile(
     val updatedAt: Long,
     val imported: Boolean,
     val pending: Boolean,
+
+    val moreInfo: MoreInfo?
 ) : Parcelable {
     enum class Type {
         File, Url, External
@@ -45,3 +47,12 @@ data class Profile(
         }
     }
 }
+
+
+@Serializable
+data class MoreInfo(
+    val uploadBase: Long,
+    val downloadBase: Long,
+    val totalBase: Long,
+    val expireTime: Long,
+)

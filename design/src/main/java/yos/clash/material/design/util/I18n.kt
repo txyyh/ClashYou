@@ -1,8 +1,8 @@
 package yos.clash.material.design.util
 
 import android.content.Context
-import yos.clash.material.common.compat.preferredLocale
 import com.github.kr328.clash.core.model.Provider
+import yos.clash.material.common.compat.preferredLocale
 import yos.clash.material.design.R
 import yos.clash.material.service.model.Profile
 import java.text.SimpleDateFormat
@@ -46,22 +46,37 @@ fun Date.format(
     return when {
         includeDate && includeTime ->
             SimpleDateFormat(DATE_ALL, locale).format(this)
+
         includeDate ->
             SimpleDateFormat(DATE_DATE_ONLY, locale).format(this)
+
         includeTime ->
             SimpleDateFormat(DATE_TIME_ONLY, locale).format(this)
+
         else -> ""
     }
 }
 
+fun Long.formatDate(
+    context: Context,
+    includeDate: Boolean = true,
+    includeTime: Boolean = true,
+): String = Date(this).format(context, includeDate, includeTime)
+
 fun Long.toBytesString(): String {
     return when {
+        this > 1024 * 1024 * 1024 * 1024L ->
+            String.format("%.2f TiB", (this.toDouble() / 1024 / 1024 / 1024 / 1024))
+
         this > 1024 * 1024 * 1024 ->
             String.format("%.2f GiB", (this.toDouble() / 1024 / 1024 / 1024))
+
         this > 1024 * 1024 ->
             String.format("%.2f MiB", (this.toDouble() / 1024 / 1024))
+
         this > 1024 ->
             String.format("%.2f KiB", (this.toDouble() / 1024))
+
         else ->
             "$this Bytes"
     }

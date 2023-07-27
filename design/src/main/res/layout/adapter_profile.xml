@@ -16,6 +16,7 @@
 
         <import type="yos.clash.material.design.util.I18nKt" />
         <import type="yos.clash.material.design.util.IntervalKt" />
+        <import type="android.view.View" />
     </data>
 
     <RelativeLayout
@@ -45,42 +46,81 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/elapsed_view"
+            android:layout_toStartOf="@id/menu_view"
+            android:layout_marginEnd="@dimen/item_midden_margin"
             android:layout_toEndOf="@id/icon_view"
             android:orientation="vertical"
             android:paddingVertical="@dimen/item_padding_vertical">
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|bottom"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{profile.name}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/item_text_margin"
+                    android:text="@{profile.pending ? @string/format_type_unsaved(I18nKt.toString(profile.type, context)) : @string/format_type_saved(I18nKt.toString(profile.type, context), IntervalKt.elapsedIntervalString(currentTime.value - profile.updatedAt, context))}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:alpha="0.5" />
+            </LinearLayout>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_text_margin"
+                android:max="100"
+                android:progress="@{(profile.moreInfo.uploadBase + profile.moreInfo.downloadBase) == 0 ? 0 : (int)(profile.moreInfo.totalBase / (profile.moreInfo.uploadBase + profile.moreInfo.downloadBase))}" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{profile.name}"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                android:layout_marginTop="@dimen/item_text_margin"
+                android:orientation="horizontal"
+                android:alpha="0.5"
+                android:visibility="@{profile.moreInfo == null ? View.GONE : View.VISIBLE}">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/format_profile_usage(I18nKt.toBytesString(profile.moreInfo.uploadBase + profile.moreInfo.downloadBase), I18nKt.toBytesString(profile.moreInfo.totalBase))}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/item_text_margin"
+                    android:text="@{I18nKt.formatDate(profile.moreInfo.expireTime, context, true, false)}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:visibility="@{profile.moreInfo.expireTime &lt;= 0 ? View.GONE : View.VISIBLE}"
+                    android:ellipsize="start"
+                    android:singleLine="true" />
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/item_text_margin"
-                android:text="@{profile.pending ? @string/format_type_unsaved(I18nKt.toString(profile.type, context)) : I18nKt.toString(profile.type, context)}"
+                android:visibility="@{profile.moreInfo == null ? View.VISIBLE : View.GONE}"
+                android:text="--"
+                android:alpha="0.5"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/elapsed_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/item_midden_margin"
-            android:layout_toStartOf="@id/menu_view"
-            android:text="@{IntervalKt.elapsedIntervalString(currentTime.value - profile.updatedAt, context)}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Tooltip" />
-
-        <View
+        <!--<View
             android:layout_width="@dimen/divider_size"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/menu_view"
             android:background="?attr/colorControlHighlight"
-            android:minHeight="@{@dimen/item_tailing_component_size * 1.5f}" />
+            android:minHeight="@{@dimen/item_tailing_component_size * 1.5f}" />-->
+        <!--分割-->
 
         <FrameLayout
             android:id="@+id/menu_view"

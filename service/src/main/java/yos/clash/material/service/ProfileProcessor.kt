@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import yos.clash.material.common.log.Log
 import com.github.kr328.clash.core.Clash
+import kotlinx.coroutines.Dispatchers
 import yos.clash.material.service.data.Imported
 import yos.clash.material.service.data.ImportedDao
 import yos.clash.material.service.data.Pending
@@ -19,6 +20,11 @@ import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import yos.clash.material.service.data.ProviderMoreInfo
+import yos.clash.material.service.data.ProviderMoreInfoDao
+import yos.clash.material.service.model.MoreInfo
+import java.net.HttpURLConnection
+import java.net.URL
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -57,6 +63,12 @@ object ProfileProcessor {
                     }
                 }.await()
 
+                val subInfo = if (snapshot.type == Profile.Type.Url) {
+                    fetchSubscriptionUserInfo(snapshot.source)
+                } else {
+                    null
+                }
+
                 profileLock.withLock {
                     if (PendingDao().queryByUUID(snapshot.uuid) == snapshot) {
                         context.importedDir.resolve(snapshot.uuid.toString())
@@ -82,6 +94,18 @@ object ProfileProcessor {
                         }
 
                         PendingDao().remove(snapshot.uuid)
+
+                        subInfo?.let {
+                            ProviderMoreInfoDao().setInfo(
+                                ProviderMoreInfo(
+                                    uuid = snapshot.uuid,
+                                    upload = it.uploadBase,
+                                    download = it.downloadBase,
+                                    total = it.totalBase,
+                                    expire = it.expireTime
+                                )
+                            )
+                        }
 
                         context.pendingDir.resolve(snapshot.uuid.toString())
                             .deleteRecursively()
@@ -121,11 +145,29 @@ object ProfileProcessor {
                     }
                 }.await()
 
+                val subInfo = if (snapshot.type == Profile.Type.Url) {
+                    fetchSubscriptionUserInfo(snapshot.source)
+                } else {
+                    null
+                }
+
                 profileLock.withLock {
                     if (ImportedDao().exists(snapshot.uuid)) {
                         context.importedDir.resolve(snapshot.uuid.toString()).deleteRecursively()
                         context.processingDir
                             .copyRecursively(context.importedDir.resolve(snapshot.uuid.toString()))
+
+                        subInfo?.let {
+                            ProviderMoreInfoDao().setInfo(
+                                ProviderMoreInfo(
+                                    uuid = snapshot.uuid,
+                                    upload = it.uploadBase,
+                                    download = it.downloadBase,
+                                    total = it.totalBase,
+                                    expire = it.expireTime
+                                )
+                            )
+                        }
 
                         context.sendProfileChanged(snapshot.uuid)
                     }
@@ -181,12 +223,53 @@ object ProfileProcessor {
         when {
             name.isBlank() ->
                 throw IllegalArgumentException("Empty name")
+
             source.isEmpty() && type != Profile.Type.File ->
                 throw IllegalArgumentException("Invalid url")
+
             source.isNotEmpty() && scheme != "https" && scheme != "http" && scheme != "content" ->
                 throw IllegalArgumentException("Unsupported url $source")
+
             interval != 0L && TimeUnit.MILLISECONDS.toMinutes(interval) < 15 ->
                 throw IllegalArgumentException("Invalid interval")
+        }
+    }
+
+    private fun String.find(regex: String, group: Int): String? {
+        return regex.toRegex().find(this)?.groupValues?.get(group)
+    }
+
+    private suspend fun fetchSubscriptionUserInfo(url: String): MoreInfo? {
+        return try {
+            val userInfoStr = withContext(Dispatchers.IO) {
+                arrayOf("Clash", "Quantumultx").forEach { ua ->
+                    val conn = URL(url).openConnection() as HttpURLConnection
+                    try {
+                        conn.requestMethod = "GET"
+                        conn.setRequestProperty("User-Agent", ua)
+
+                        if (conn.responseCode == HttpURLConnection.HTTP_OK) {
+                            return@withContext conn.headerFields.entries.firstOrNull {
+                                "subscription-userinfo".equals(it.key, true)
+                            }?.value?.firstOrNull()
+                        }
+                    } finally {
+                        conn.disconnect()
+                    }
+                }
+                null
+            }
+
+            userInfoStr?.let {
+                MoreInfo(
+                    uploadBase = it.find("upload=(\\d+)", 1)!!.toLong(),
+                    downloadBase = it.find("download=(\\d+)", 1)!!.toLong(),
+                    totalBase = it.find("total=(\\d+)", 1)!!.toLong(),
+                    expireTime = it.find("expire=(\\d+)", 1)?.toLong()?.times(1000) ?: -1,
+                )
+            }
+        } catch (e: Exception) {
+            null
         }
     }
 }
