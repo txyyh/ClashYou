@@ -6,7 +6,7 @@ Based on [Clash for Android](https://github.com/Kr328/ClashForAndroid),
 a [Clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, using the Material
 You design language.
 
-The latest Releases version can be obtained from
+The latest Release version can be obtained from
 [Releases](https://github.com/Kr328/ClashForAndroid/releases)
 and CI version can be obtained from
 [Actions](https://github.com/Yos-X/ClashYou/actions) (login is required, thanks to [@Light_summer](https://github.com/lightsummer233)).
