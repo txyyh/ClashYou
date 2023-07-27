@@ -28,4 +28,5 @@ dependencies {
     implementation(libs.androidx.viewpager)
     implementation(libs.google.material)
     implementation(libs.getactivity.xxpermission)
+    implementation(libs.androidx.splashscreen)
 }

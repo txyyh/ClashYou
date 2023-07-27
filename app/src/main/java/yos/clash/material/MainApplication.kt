@@ -19,7 +19,6 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         val processName = currentProcessName
 
         Log.d("Process $processName started")
@@ -29,7 +28,6 @@ class MainApplication : Application() {
         } else {
             sendServiceRecreated()
         }
-        //屏幕遮罩
     }
 
     fun finalize() {

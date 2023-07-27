@@ -53,9 +53,9 @@ class HelpDesign(
                 }
             }
 
-            /*category(R.string.feedback)
+            category(R.string.feedback)
 
-            if (YosConfigAchieve.getIfPremium()) {
+            /*if (YosConfigAchieve.getIfPremium()) {
                 clickable(
                     title = R.string.google_play,
                     summary = R.string.google_play_url
@@ -64,7 +64,7 @@ class HelpDesign(
                         openLink(Uri.parse(context.getString(R.string.google_play_url)))
                     }
                 }
-            }
+            }*/
 
             clickable(
                 title = R.string.github_issues,
@@ -73,7 +73,7 @@ class HelpDesign(
                 clicked {
                     openLink(Uri.parse(context.getString(R.string.github_issues_url)))
                 }
-            }*/
+            }
 
                 category(R.string.sources)
 

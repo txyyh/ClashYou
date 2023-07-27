@@ -3,6 +3,6 @@
     <style name="BootstrapTheme" parent="AppThemeLight" />
     <style name="SplashTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
-        <item name="postSplashScreenTheme">@style/BootstrapTheme</item>
+        <item name="postSplashScreenTheme">@style/AppThemeLight</item>
     </style>
 </resources>

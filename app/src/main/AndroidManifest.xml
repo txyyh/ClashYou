@@ -21,7 +21,7 @@
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
-
+    <!--suppress AndroidDomInspection -->
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -33,9 +33,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
+        android:enableOnBackInvokedCallback="true"
         android:theme="@style/BootstrapTheme"
         tools:ignore="DataExtractionRules,GoogleAppIndexingWarning"
-        tools:targetApi="N">
+        tools:targetApi="tiramisu">
         <meta-data
             android:name="releaseName"
             android:value="@string/release_name" />
@@ -46,11 +47,11 @@
         <!--suppress AndroidDomInspection -->
         <activity
             android:name=".MainActivity"
+            android:theme="@style/SplashTheme"
             android:configChanges="uiMode"
             android:exported="true"
             android:label="@string/launch_name"
-            android:launchMode="singleTop"
-            android:theme="@style/SplashTheme">
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
