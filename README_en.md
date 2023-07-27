@@ -3,11 +3,13 @@
 **⚠ This page is translated by GPT 4.**
 
 Based on [Clash for Android](https://github.com/Kr328/ClashForAndroid),
-a [clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, using the Material
+a [Clash](https://github.com/Dreamacro/clash) GUI designed for Android devices, using the Material
 You design language.
 
-The latest version can be obtained
-from [Releases](https://github.com/Kr328/ClashForAndroid/releases).
+The latest Release version can be obtained from
+[Releases](https://github.com/Kr328/ClashForAndroid/releases)
+and CI version can be obtained from
+[Actions](https://github.com/Yos-X/ClashYou/actions) (login is required, thanks to [@Light_summer](https://github.com/lightsummer233)).
 
 ### Version Features
 
@@ -15,14 +17,24 @@ from [Releases](https://github.com/Kr328/ClashForAndroid/releases).
 - Application theme supports dynamic color picking
 - UI following MD3 design style
 
-### Implementation
+### Attention
 
-Complete [clash](https://github.com/Dreamacro/clash) implementation ~~(no `external-controller`~~
+Clash You is based on **the final version** of Clash for Android, which has entered **a long-term non update state**.
+
+Therefore, the old kernel used by Clash You may **not support** some features of the new Clash core.
+
+For **the newer features** of Clash, consider the Clash Multiplatform project being developed by the original author [@Kr238](https://github.com/Kr328).
+
+Telegram Channel：[Clash Multiplatform](https://t.me/+uCUxZwHNjZxlYThl)
+
+### Feature
+
+Fully feature of [Clash](https://github.com/Dreamacro/clash)
 
 ### Runtime Requirements
 
 - Android 5.0+ (minimum)
-- Android 7.0+ (recommended)
+- Android 12.0+ (recommended)
 - `armeabi-v7a`, `arm64-v8a`, `x86` or `x86_64` architecture
 
 ### License
