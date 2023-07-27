@@ -21,7 +21,7 @@ and CI version can be obtained from
 
 Clash You is based on **the final version** of Clash for Android, which has entered **a long-term non update state**.
 
-Therefore, the old kernel used by Clash You may **not support** some features of the new Clash core.
+Therefore, the old core used by Clash You may **not support** some features of the new Clash core.
 
 For **the newer features** of Clash, consider the Clash Multiplatform project being developed by the original author [@Kr238](https://github.com/Kr328).
 
